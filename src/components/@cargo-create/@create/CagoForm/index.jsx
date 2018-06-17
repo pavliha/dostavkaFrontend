@@ -1,6 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import formik from './formik'
+import { withStyles } from '@material-ui/core/styles'
+import Card from '@material-ui/core/es/Card/Card'
+import formItems from './formItems'
+import FormItem from './FormItem'
+import connector from '../../connector'
+
+const styles = theme => ({})
 
 class CargoForm extends React.Component {
 
@@ -11,10 +17,17 @@ class CargoForm extends React.Component {
 
   render() {
 
+    const { classes, selected } = this.props
     return (
-      <div>
-        form
-      </div>
+      <Card className={classes.root}>
+        {selected.map((itemName, index) =>
+          <FormItem
+            key={index}
+            label={formItems[itemName].label}>
+            {formItems[itemName].component}
+          </FormItem>
+        )}
+      </Card>
     )
 
   }
@@ -22,4 +35,4 @@ class CargoForm extends React.Component {
 
 CargoForm.propTypes = {}
 
-export default formik(CargoForm)
+export default withStyles(styles)(connector(CargoForm))
