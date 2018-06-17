@@ -25,7 +25,7 @@ const initialState = {
   selected: ['title', 'from', 'to'],
   loading: false,
   error: false,
-  map: {},
+  map: []
 }
 
 const addCargo = (state = initialState, { type, payload }) => {
@@ -45,12 +45,6 @@ const addCargo = (state = initialState, { type, payload }) => {
       return {
         ...state,
         selected: selected.filter((filter) => filter !== payload),
-      }
-    }
-    case CREATE_CARGO: {
-      return {
-        ...state,
-        map: map
       }
     }
 
@@ -78,10 +72,20 @@ const addCargo = (state = initialState, { type, payload }) => {
 
     case UPDATE_MAP: {
 
-      const state = [...state]
+      const map = [...state.map]
+
+      if (payload.name === 'from') {
+        map.push({ from: payload.value })
+      }
+
+      if (payload.name === 'to') {
+        map.push({ to: payload.value })
+      }
 
       return {
         ...state,
+        map,
+        payload
       }
     }
 

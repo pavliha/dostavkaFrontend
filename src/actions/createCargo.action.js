@@ -24,7 +24,8 @@ export const remove = formItem => ({
 export const updateMap = (name, values) => ({
   type: UPDATE_MAP,
   payload: {
-    [name]: {
+    name: name,
+    value: {
       lat: values.geometry.location.lat(),
       lng: values.geometry.location.lng()
     }

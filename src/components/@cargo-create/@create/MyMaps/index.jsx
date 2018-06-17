@@ -21,12 +21,9 @@ const MapWithADirectionsRenderer = compose(
 
       const props = this.props
 
-      if (!props.map) return null
-
       debugger
-      if(!props.map.to) return null
-      if(!props.map.from) return null
-
+      if (!props.map.to) return null
+      if (!props.map.from) return null
 
       const DirectionsService = new google.maps.DirectionsService()
 
