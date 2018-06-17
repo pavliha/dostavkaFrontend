@@ -1,7 +1,7 @@
 /* eslint-disable function-paren-newline */
 import React from 'react'
 import PropTypes from 'prop-types'
-import CargoCard from './CargoCard'
+import CargoCard from './CargoCard/index'
 import connector from './connector'
 
 class CargoList extends React.Component {
