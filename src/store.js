@@ -3,6 +3,7 @@ import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import promiseMiddleware from 'redux-promise-middleware'
 import reducers from './reducers'
+import { getSavedUser } from './actions/auth.action'
 
 const store = createStore(
   reducers,
@@ -11,5 +12,9 @@ const store = createStore(
     promiseMiddleware(),
   )),
 )
+
+if (Cache.has('user')) {
+  store.dispatch(getSavedUser())
+}
 
 export default store
