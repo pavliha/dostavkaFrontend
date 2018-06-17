@@ -7,6 +7,7 @@ import LoginScene from './auth/@login/LoginScene'
 import Header from './Header'
 import IndexScene from './@index/IndexScene'
 import Alert from './Alert'
+import CargoScene from './@cargo/CargoScene'
 
 const LayoutScene = () =>
   <main>
@@ -15,6 +16,7 @@ const LayoutScene = () =>
       <Route path="/" exact component={IndexScene} />
       <Route path="/register" component={RegisterScene} />
       <Route path="/login" component={LoginScene} />
+      <Route exact path="/cargo" component={CargoScene} />
       <Route path="/cargo" component={CargoCreateScene} />
     </Switch>
     <Alert />
