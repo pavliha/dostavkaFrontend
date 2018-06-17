@@ -1,4 +1,10 @@
-import { ADD_FORM_ITEM, REMOVE_FORM_ITEM, SUBMIT_FORM } from '../actions/createCargo.action'
+import {
+  ADD_FORM_ITEM,
+  CREATE_CARGO, CREATE_CARGO_FULFILLED,
+  CREATE_CARGO_PENDING, CREATE_CARGO_REJECTED,
+  REMOVE_FORM_ITEM,
+  UPDATE_MAP,
+} from '../actions/createCargo.action'
 
 const initialState = {
   badges: [
@@ -17,6 +23,9 @@ const initialState = {
   ],
   required: ['title', 'from', 'to'],
   selected: ['title', 'from', 'to'],
+  loading: false,
+  error: false,
+  map: {},
 }
 
 const addCargo = (state = initialState, { type, payload }) => {
@@ -38,9 +47,42 @@ const addCargo = (state = initialState, { type, payload }) => {
         selected: selected.filter((filter) => filter !== payload),
       }
     }
+    case CREATE_CARGO: {
+      return {
+        ...state,
+        map: map
+      }
+    }
 
-    case SUBMIT_FORM: {
+    case CREATE_CARGO_PENDING: {
+      return {
+        ...state,
+        loading: true,
+      }
 
+    }
+
+    case CREATE_CARGO_FULFILLED: {
+      return {
+        ...state,
+        response: payload,
+      }
+    }
+
+    case CREATE_CARGO_REJECTED: {
+      return {
+        ...state,
+        error: payload,
+      }
+    }
+
+    case UPDATE_MAP: {
+
+      const state = [...state]
+
+      return {
+        ...state,
+      }
     }
 
     default: {

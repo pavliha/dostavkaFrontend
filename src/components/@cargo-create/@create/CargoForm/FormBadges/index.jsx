@@ -14,7 +14,7 @@ const FilterBadges = ({ badges, selected, actions }) => {
     const key = Object.keys(obj)[0]
     return (
       <Badge
-        onClick={() => actions.filter.add(key)}
+        onClick={() => actions.cargoForm.add(key)}
         key={key}
       >
         {value}

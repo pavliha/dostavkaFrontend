@@ -6,7 +6,7 @@ const initMapStateToProps = state => state.addCargoFormReducer
 
 const initMapDispatchToProps = dispatch => ({
   actions: {
-    filter: bindActionCreators(actions, dispatch),
+    cargoForm: bindActionCreators(actions, dispatch),
   },
 })
 

@@ -44,7 +44,7 @@ const FormItems = ({ required, selected, actions, form, hasError, showHelperErro
     return (
       <FormItem
         isRequired={!!required[index]}
-        onClose={() => actions.filter.remove(name)}
+        onClose={() => actions.cargoForm.remove(name)}
         key={index}
         title={label}
       >

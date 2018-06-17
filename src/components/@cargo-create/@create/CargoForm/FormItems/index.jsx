@@ -35,7 +35,10 @@ const FormItems = ({ required, selected, actions, form, hasError, showHelperErro
       Input = decorator({
         value: values[name],
         error: hasError(name),
-        onChange: setFieldValue,
+        onChange: (name, value) => {
+          actions.cargoForm.updateMap(name, value)
+          setFieldValue(name, value)
+        },
         onBlur: setFieldTouched,
         helperText: showHelperError(name),
       })(component)
@@ -44,7 +47,7 @@ const FormItems = ({ required, selected, actions, form, hasError, showHelperErro
     return (
       <FormItem
         isRequired={!!required[index]}
-        onClose={() => actions.filter.remove(name)}
+        onClose={() => actions.cargoForm.remove(name)}
         key={index}
         title={label}
       >
