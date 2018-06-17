@@ -62,59 +62,63 @@ class RegisterCard extends React.Component {
       <Card className={classes.root}>
         <form onSubmit={this.handleSubmit}>
           <CardContent className={classes.inputGroup}>
-            <Typography variant="subheading">Введите ваше имя и фамилия:</Typography>
-            <TextField
-              className={classes.input}
-              fullWidth
-              error={this.hasError('name')}
-              helperText={this.showHelperError('name')}
-              type="text"
-              name="name"
-              label="имя и фамилия"
-              value={values.name}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            <Typography variant="subheading">Введите ваш email:</Typography>
-            <TextField
-              className={classes.input}
-              fullWidth
-              error={this.hasError('email')}
-              helperText={this.showHelperError('email')}
-              type="email"
-              name="email"
-              label="email"
-              value={values.email}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            <Typography variant="subheading">Введите ваш номер телефона:</Typography>
-            <TextField
-              className={classes.input}
-              fullWidth
-              name="phone"
-              error={this.hasError('phone')}
-              helperText={this.showHelperError('phone')}
-              type="tel"
-              label="номер телефона"
-              value={values.phone}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            <Typography variant="subheading">Придумайте пароль:</Typography>
-            <TextField
-              className={classes.input}
-              fullWidth
-              name="password"
-              error={this.hasError('password')}
-              helperText={this.showHelperError('password')}
-              type="password"
-              label="пароль"
-              autoComplete="current-password"
-              value={values.password}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
+            <div className={classes.input}>
+              <Typography variant="subheading">Введите ваше имя и фамилию:</Typography>
+              <TextField
+                fullWidth
+                error={this.hasError('name')}
+                helperText={this.showHelperError('name')}
+                type="text"
+                name="name"
+                label="Имя и фамилия"
+                value={values.name}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+            </div>
+            <div className={classes.input}>
+              <Typography variant="subheading">Введите email:</Typography>
+              <TextField
+                fullWidth
+                error={this.hasError('email')}
+                helperText={this.showHelperError('email')}
+                type="email"
+                name="email"
+                label="Email"
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+            </div>
+            <div className={classes.input}>
+              <Typography variant="subheading">Введите ваш номер телефона:</Typography>
+              <TextField
+                fullWidth
+                name="phone"
+                error={this.hasError('phone')}
+                helperText={this.showHelperError('phone')}
+                type="tel"
+                label="Номер телефона"
+                value={values.phone}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+            </div>
+            <div className={classes.input}>
+              <Typography variant="subheading">Придумайте пароль:</Typography>
+              <TextField
+                fullWidth
+                name="password"
+                error={this.hasError('password')}
+                helperText={this.showHelperError('password')}
+                type="password"
+                label="Пароль"
+                autoComplete="current-password"
+                value={values.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+            </div>
           </CardContent>
           <CardActions>
             <Button
