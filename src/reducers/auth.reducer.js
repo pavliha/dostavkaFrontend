@@ -1,4 +1,5 @@
 import {
+  REGISTER_USER,
   REGISTER_USER_PENDING,
   REGISTER_USER_FULFILLED,
   REGISTER_USER_REJECTED,
@@ -13,6 +14,12 @@ const initialState = {
 
 const authReducer = (state = initialState, { type, payload }) => {
   switch (type) {
+    case REGISTER_USER: {
+      return {
+        ...state,
+        user: payload,
+      }
+    }
     case REGISTER_USER_PENDING: {
       return {
         ...state,
