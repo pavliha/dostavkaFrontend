@@ -44,6 +44,16 @@ const FormItems = ({ required, selected, actions, form, hasError, showHelperErro
       })(component)
     }
 
+    if (name === 'pictures') {
+      Input = decorator({
+        value: values[name],
+        error: hasError(name),
+        onChange: setFieldValue,
+        onBlur: setFieldTouched,
+        helperText: showHelperError(name),
+      })(component)
+    }
+
     return (
       <FormItem
         isRequired={!!required[index]}

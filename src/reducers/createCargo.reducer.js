@@ -13,6 +13,7 @@ const initialState = {
     { to: 'куда' },
     { time: 'время' },
     { date_from: 'дата отправки' },
+    { pictures: 'фото' },
     { dimensions: 'размеры' },
     { weight: 'вес' },
     { date_to: 'дата доставки' },

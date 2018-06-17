@@ -39,6 +39,7 @@ export default withFormik({
     to: Yup.object().required('Это поле является обязательным для заполнения!'),
     date_from: Yup.date(),
     date_to: Yup.date(),
+    pictures: Yup.array(),
     dimensions: Yup.string(),
     weight: Yup.number(),
     volume: Yup.number(),

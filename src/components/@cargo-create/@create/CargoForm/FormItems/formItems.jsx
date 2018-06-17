@@ -5,6 +5,7 @@ import MenuItem from '@material-ui/core/es/MenuItem/MenuItem'
 import TextField from '@material-ui/core/es/TextField/TextField'
 import InputAdornment from '@material-ui/core/es/InputAdornment/InputAdornment'
 import Geosuggest from '../../../../Geosuggest'
+import PictureUpload from './PictureUpload/index'
 
 export default {
 
@@ -78,6 +79,11 @@ export default {
         shrink: true,
       }}
     />,
+  },
+
+  pictures: {
+    label: 'Добавить фотографий?',
+    component: <PictureUpload name="pictures" />,
   },
 
   dimensions: {
