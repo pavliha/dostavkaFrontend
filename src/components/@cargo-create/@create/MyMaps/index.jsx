@@ -24,9 +24,6 @@ const MapWithADirectionsRenderer = compose(
       if (!props.map.to) return null
       if (!props.map.from) return null
 
-
-      debugger
-
       const DirectionsService = new google.maps.DirectionsService()
 
       DirectionsService.route({
