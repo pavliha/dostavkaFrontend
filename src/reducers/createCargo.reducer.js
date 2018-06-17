@@ -22,6 +22,7 @@ const initialState = {
 
 const addCargo = (state = initialState, { type, payload }) => {
   switch (type) {
+
     case ADD_FORM_ITEM: {
       const selected = [...state.selected]
       selected.push(payload)
