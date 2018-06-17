@@ -1,5 +1,5 @@
 import User from '../services/api/User'
-// import * as alert from './alert.action'
+import * as alert from './alert.action'
 import store from '../store'
 
 export const REGISTER_USER = 'REGISTER_USER'
@@ -18,13 +18,13 @@ export const LOAD_SAVED_USER = 'LOAD_SAVED_USER'
 
 export const register = (form) => ({
   type: REGISTER_USER,
-  payload: form,
+  payload: User.register(form),
 })
 
 export const login = (form) => async dispatch => {
   await dispatch({
     type: LOGIN_USER,
-    payload: form,
+    payload: User.login(form),
   })
 
   const { error } = store.getState().authReducer
