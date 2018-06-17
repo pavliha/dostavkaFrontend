@@ -62,7 +62,7 @@ class RegisterCard extends React.Component {
       <Card className={classes.root}>
         <form onSubmit={this.handleSubmit}>
           <CardContent className={classes.inputGroup}>
-            <Typography variant="subheading">Введите ваше имя и фамилия:</Typography>
+            <Typography variant="subheading">Введите ваше имя и фамилию:</Typography>
             <TextField
               className={classes.input}
               fullWidth
@@ -70,12 +70,12 @@ class RegisterCard extends React.Component {
               helperText={this.showHelperError('name')}
               type="text"
               name="name"
-              label="имя и фамилия"
+              label="Имя и фамилия"
               value={values.name}
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            <Typography variant="subheading">Введите ваш email:</Typography>
+            <Typography variant="subheading">Введите email:</Typography>
             <TextField
               className={classes.input}
               fullWidth
@@ -83,7 +83,7 @@ class RegisterCard extends React.Component {
               helperText={this.showHelperError('email')}
               type="email"
               name="email"
-              label="email"
+              label="Email"
               value={values.email}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -96,7 +96,7 @@ class RegisterCard extends React.Component {
               error={this.hasError('phone')}
               helperText={this.showHelperError('phone')}
               type="tel"
-              label="номер телефона"
+              label="Номер телефона"
               value={values.phone}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -109,7 +109,7 @@ class RegisterCard extends React.Component {
               error={this.hasError('password')}
               helperText={this.showHelperError('password')}
               type="password"
-              label="пароль"
+              label="Пароль"
               autoComplete="current-password"
               value={values.password}
               onChange={handleChange}
