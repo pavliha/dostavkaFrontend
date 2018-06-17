@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import createCargoReducer from './createCargo.reducer'
+import addCargoFormReducer from './createCargo.reducer'
 
 export default combineReducers({
-  createCargoReducer
+  addCargoFormReducer,
 })
