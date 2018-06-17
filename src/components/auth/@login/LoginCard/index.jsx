@@ -7,8 +7,8 @@ import CardActions from '@material-ui/core/es/CardActions/CardActions'
 import CardContent from '@material-ui/core/es/CardContent/CardContent'
 import Button from '@material-ui/core/es/Button/Button'
 import Typography from '@material-ui/core/es/Typography/Typography'
-import registerFormik from './registerFormik'
-import connector from './connector'
+import loginFormik from './loginFormik'
+import connector from '../../connector'
 
 const styles = theme => ({
   root: {
@@ -22,10 +22,11 @@ const styles = theme => ({
   },
 })
 
-class RegisterCard extends React.Component {
+class LoginCard extends React.Component {
   state = {
     isSubmited: false,
   }
+
   handleSubmit = (e) => {
     const { handleSubmit } = this.props
     this.setState({ isSubmited: true })
@@ -53,28 +54,17 @@ class RegisterCard extends React.Component {
   showHelperError = (fieldName) => {
     const { errors, touched } = this.props
 
+
     return (touched[fieldName] && errors[fieldName]) || this.serverError(fieldName)
   }
 
   render() {
     const { classes, values, handleChange, handleBlur, isSubmitting } = this.props
+
     return (
       <Card className={classes.root}>
         <form onSubmit={this.handleSubmit}>
           <CardContent className={classes.inputGroup}>
-            <Typography variant="subheading">Введите ваше имя и фамилия:</Typography>
-            <TextField
-              className={classes.input}
-              fullWidth
-              error={this.hasError('name')}
-              helperText={this.showHelperError('name')}
-              type="text"
-              name="name"
-              label="имя и фамилия"
-              value={values.name}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
             <Typography variant="subheading">Введите ваш email:</Typography>
             <TextField
               className={classes.input}
@@ -88,20 +78,7 @@ class RegisterCard extends React.Component {
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            <Typography variant="subheading">Введите ваш номер телефона:</Typography>
-            <TextField
-              className={classes.input}
-              fullWidth
-              name="phone"
-              error={this.hasError('phone')}
-              helperText={this.showHelperError('phone')}
-              type="tel"
-              label="номер телефона"
-              value={values.phone}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            <Typography variant="subheading">Придумайте пароль:</Typography>
+            <Typography variant="subheading">Введите ваш пароль:</Typography>
             <TextField
               className={classes.input}
               fullWidth
@@ -110,7 +87,6 @@ class RegisterCard extends React.Component {
               helperText={this.showHelperError('password')}
               type="password"
               label="пароль"
-              autoComplete="current-password"
               value={values.password}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -124,7 +100,7 @@ class RegisterCard extends React.Component {
               color="primary"
               disabled={isSubmitting}
             >
-              Зарегистрироваться
+              Войти
             </Button>
           </CardActions>
         </form>
@@ -133,7 +109,8 @@ class RegisterCard extends React.Component {
   }
 }
 
-RegisterCard.propTypes = {
+LoginCard.propTypes = {
+  auth: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
   values: PropTypes.object.isRequired,
   touched: PropTypes.object.isRequired,
@@ -142,7 +119,6 @@ RegisterCard.propTypes = {
   handleBlur: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   isSubmitting: PropTypes.bool.isRequired,
-  auth: PropTypes.object.isRequired,
 }
 
-export default withStyles(styles)(registerFormik(connector(RegisterCard)))
+export default withStyles(styles)(loginFormik(connector(LoginCard)))

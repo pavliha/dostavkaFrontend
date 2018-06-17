@@ -1,7 +1,7 @@
 import { withFormik } from 'formik'
 import * as Yup from 'yup'
-import store from '../../../store'
-import * as auth from '../../../actions/auth.action'
+import store from '../../../../store'
+import * as auth from '../../../../actions/auth.action'
 
 const loginFormik = withFormik({
   validationSchema: Yup.object().shape({

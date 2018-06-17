@@ -1,7 +1,7 @@
 import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
-import RegisterCard from './RegisterCard'
+import RegisterCard from './RegisterCard/index'
 
 const styles = theme => ({
   root: {
