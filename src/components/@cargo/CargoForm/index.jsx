@@ -57,18 +57,6 @@ class CargoForm extends React.Component {
             />
             <AdditionalFormItems />
           </CardContent>
-          <CardActions>
-            <Button
-              fullWidth
-              type="submit"
-              variant="raised"
-              size="large"
-              color="primary"
-              disabled={form.isSubmitting}
-            >
-              Добавить груз
-            </Button>
-          </CardActions>
         </form>
       </Card>
     )
