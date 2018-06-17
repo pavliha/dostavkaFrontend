@@ -6,16 +6,18 @@ import withTheme from '../utils/withTheme'
 import LoginScene from './auth/@login/LoginScene'
 import Header from './Header'
 import IndexScene from './@index/IndexScene'
+import Alert from './Alert'
 
 const LayoutScene = () =>
   <main>
     <Header />
     <Switch>
       <Route path="/" exact component={IndexScene} />
-      <Route path="/cargo" component={CargoCreateScene} />
       <Route path="/register" component={RegisterScene} />
       <Route path="/login" component={LoginScene} />
+      <Route path="/cargo" component={CargoCreateScene} />
     </Switch>
+    <Alert />
   </main>
 
 LayoutScene.propTypes = {}
