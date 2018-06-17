@@ -4,6 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import promiseMiddleware from 'redux-promise-middleware'
 import reducers from './reducers'
 import { getSavedUser } from './actions/auth.action'
+import Cache from './services/Cache'
 
 const store = createStore(
   reducers,

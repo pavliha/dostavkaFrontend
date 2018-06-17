@@ -20,6 +20,7 @@
     "faker": "^4.1.0",
     "formik": "^0.11.11",
     "history": "^4.7.2",
+    "jwt-decode": "^2.2.0",
     "lodash": "^4.17.10",
     "moment": "^2.22.2",
     "prop-types": "^15.6.1",
@@ -36,8 +37,7 @@
     "redux-promise-middleware": "^5.1.1",
     "redux-thunk": "^2.2.0",
     "url-loader": "^1.0.1",
-    "yup": "0.24.1",
-    "jwt-decode": "latest"
+    "yup": "0.24.1"
   },
   "devDependencies": {
     "autoprefixer": "^8.5.1",

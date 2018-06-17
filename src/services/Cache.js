@@ -12,7 +12,6 @@ class Cache {
     localStorage.setItem(`cache-${name}`, JSON.stringify(value))
   }
 
-  // noinspection JSUnusedGlobalSymbols
   remove(name) {
     localStorage.removeItem(`cache-${name}`)
     return name
