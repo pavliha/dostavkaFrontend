@@ -1,6 +1,6 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
+import PropTypes from 'prop-types'
 import RegisterCard from './RegisterCard'
 
 const styles = theme => ({
@@ -11,7 +11,6 @@ const styles = theme => ({
     justifyContent: 'center',
   },
 })
-
 const RegisterScene = ({ classes }) =>
   <div className={classes.root}>
     <RegisterCard />

@@ -70,7 +70,7 @@ class RegisterCard extends React.Component {
               helperText={this.showHelperError('name')}
               type="text"
               name="name"
-              label="Имя и фамилия"
+              label="имя и фамилия"
               value={values.name}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -83,7 +83,7 @@ class RegisterCard extends React.Component {
               helperText={this.showHelperError('email')}
               type="email"
               name="email"
-              label="Email"
+              label="email"
               value={values.email}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -96,12 +96,12 @@ class RegisterCard extends React.Component {
               error={this.hasError('phone')}
               helperText={this.showHelperError('phone')}
               type="tel"
-              label="Номер телефона"
+              label="номер телефона"
               value={values.phone}
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            <Typography variant="subheading">Пароль:</Typography>
+            <Typography variant="subheading">Придумайте пароль:</Typography>
             <TextField
               className={classes.input}
               fullWidth
@@ -109,7 +109,7 @@ class RegisterCard extends React.Component {
               error={this.hasError('password')}
               helperText={this.showHelperError('password')}
               type="password"
-              label="Пароль"
+              label="пароль"
               autoComplete="current-password"
               value={values.password}
               onChange={handleChange}
@@ -145,4 +145,4 @@ RegisterCard.propTypes = {
   auth: PropTypes.object.isRequired,
 }
 
-export default withStyles(styles)(connector(registerFormik(RegisterCard)))
+export default withStyles(styles)(registerFormik(connector(RegisterCard)))

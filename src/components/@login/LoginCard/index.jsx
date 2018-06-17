@@ -65,7 +65,7 @@ class LoginCard extends React.Component {
       <Card className={classes.root}>
         <form onSubmit={this.handleSubmit}>
           <CardContent className={classes.inputGroup}>
-            <Typography variant="subheading">Введите Email:</Typography>
+            <Typography variant="subheading">Введите ваш email:</Typography>
             <TextField
               className={classes.input}
               fullWidth
@@ -73,12 +73,12 @@ class LoginCard extends React.Component {
               helperText={this.showHelperError('email')}
               type="email"
               name="email"
-              label="Email"
+              label="email"
               value={values.email}
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            <Typography variant="subheading">Введите пароль:</Typography>
+            <Typography variant="subheading">Введите ваш пароль:</Typography>
             <TextField
               className={classes.input}
               fullWidth
@@ -86,7 +86,7 @@ class LoginCard extends React.Component {
               error={this.hasError('password')}
               helperText={this.showHelperError('password')}
               type="password"
-              label="Пароль"
+              label="пароль"
               value={values.password}
               onChange={handleChange}
               onBlur={handleBlur}
