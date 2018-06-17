@@ -72,20 +72,14 @@ const addCargo = (state = initialState, { type, payload }) => {
 
     case UPDATE_MAP: {
 
-      const map = [...state.map]
+      const map = { ...state.map }
 
-      if (payload.name === 'from') {
-        map.push({ from: payload.value })
-      }
-
-      if (payload.name === 'to') {
-        map.push({ to: payload.value })
-      }
+      map.from = payload.name === 'from' ? payload.value : map.from
+      map.to = payload.name === 'to' ? payload.value : map.to
 
       return {
         ...state,
         map,
-        payload
       }
     }
 

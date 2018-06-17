@@ -17,13 +17,15 @@ const MapWithADirectionsRenderer = compose(
   }),
   withGoogleMap,
   lifecycle({
-    componentDidMount() {
+    componentDidUpdate() {
 
       const props = this.props
 
-      debugger
       if (!props.map.to) return null
       if (!props.map.from) return null
+
+
+      debugger
 
       const DirectionsService = new google.maps.DirectionsService()
 
