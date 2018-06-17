@@ -1,9 +1,9 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import CargoCreateScene from './@cargo-create/CargoCreateScene'
-import RegisterScene from './@register/RegisterScene'
+import RegisterScene from './auth/@register/RegisterScene'
 import withTheme from '../utils/withTheme'
-import LoginScene from './@login/LoginScene'
+import LoginScene from './auth/@login/LoginScene'
 import Header from './Header'
 import IndexScene from './@index/IndexScene'
 
