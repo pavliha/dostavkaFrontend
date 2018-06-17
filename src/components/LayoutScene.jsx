@@ -5,11 +5,13 @@ import RegisterScene from './@register/RegisterScene'
 import withTheme from '../utils/withTheme'
 import LoginScene from './@login/LoginScene'
 import Header from './Header'
+import IndexScene from './@index/IndexScene'
 
 const LayoutScene = () =>
   <main>
     <Header />
     <Switch>
+      <Route path="/" exact component={IndexScene} />
       <Route path="/cargo" component={CargoCreateScene} />
       <Route path="/register" component={RegisterScene} />
       <Route path="/login" component={LoginScene} />
