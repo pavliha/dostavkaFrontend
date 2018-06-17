@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/es/Grid/Grid'
 import CargoForm from './CargoForm'
+import Container from '../../Container'
 
 const styles = theme => ({
   root: {
@@ -24,11 +25,13 @@ const styles = theme => ({
 
 const CreateScene = ({ classes }) =>
   <section className={classes.root}>
-    <Grid container>
-      <Grid item md={5}>
-        <CargoForm />
+    <Container>
+      <Grid container>
+        <Grid item md={5}>
+          <CargoForm />
+        </Grid>
       </Grid>
-    </Grid>
+    </Container>
   </section>
 
 CreateScene.propTypes = {
