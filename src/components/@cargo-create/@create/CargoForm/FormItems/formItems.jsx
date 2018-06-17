@@ -4,7 +4,7 @@ import Select from '@material-ui/core/es/Select/Select'
 import MenuItem from '@material-ui/core/es/MenuItem/MenuItem'
 import TextField from '@material-ui/core/es/TextField/TextField'
 import InputAdornment from '@material-ui/core/es/InputAdornment/InputAdornment'
-import Geosuggest from '../../../Geosuggest'
+import Geosuggest from '../../../../Geosuggest'
 
 export default {
 

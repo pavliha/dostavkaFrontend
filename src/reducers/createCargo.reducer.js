@@ -8,7 +8,6 @@ const initialState = {
     { time: 'время' },
     { date_from: 'дата отправки' },
     { dimensions: 'размеры' },
-    { pictures: 'фото' },
     { weight: 'вес' },
     { date_to: 'дата доставки' },
     { volume: 'обьём' },
