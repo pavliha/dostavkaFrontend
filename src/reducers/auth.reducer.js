@@ -1,13 +1,17 @@
+import Cache from '../services/Cache'
+
 import {
-  REGISTER_USER,
   REGISTER_USER_PENDING,
   REGISTER_USER_FULFILLED,
   REGISTER_USER_REJECTED,
 
-  LOGIN_USER,
   LOGIN_USER_FULFILLED,
   LOGIN_USER_PENDING,
   LOGIN_USER_REJECTED,
+
+  LOGOUT_USER,
+
+  LOAD_SAVED_USER,
 } from '../actions/auth.action'
 
 const initialState = {
@@ -19,12 +23,6 @@ const initialState = {
 
 const authReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case REGISTER_USER: {
-      return {
-        ...state,
-        user: payload,
-      }
-    }
     case REGISTER_USER_PENDING: {
       return {
         ...state,
@@ -34,7 +32,7 @@ const authReducer = (state = initialState, { type, payload }) => {
     case REGISTER_USER_FULFILLED: {
       return {
         ...state,
-        user: payload,
+        user: Cache.get('user'),
         loading: false,
       }
     }
@@ -45,12 +43,6 @@ const authReducer = (state = initialState, { type, payload }) => {
         errors: payload,
         loading: false,
 
-      }
-    }
-    case LOGIN_USER: {
-      return {
-        ...state,
-        user: payload,
       }
     }
 
@@ -76,6 +68,21 @@ const authReducer = (state = initialState, { type, payload }) => {
 
       }
     }
+
+    case LOGOUT_USER: {
+      return {
+        ...state,
+        user: null,
+      }
+    }
+
+    case LOAD_SAVED_USER: {
+      return {
+        ...state,
+        user: payload,
+      }
+    }
+
     default: {
       return state
     }
