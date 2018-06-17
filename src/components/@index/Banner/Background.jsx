@@ -3,13 +3,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 // eslint-disable-next-line max-len
-const url = 'https://besthqwallpapers.com/img/original/29482/tesla-semi-truck-4k-road-2018-truck-electric-truck.jpg'
+const url = 'https://lh3.googleusercontent.com/UY7g1wiPeGHuTMXrEIf7-jW7C1SVHJgEmdgc0KtUXlNPai39JpigHScQhXcE2SldzGHdvPjq4TLPGijyOtK0=w1600-h794-rw'
 
 const style = {
   backgroundImage: `url(${url})`,
   backgroundPosition: 'center',
   backgroundSize: 'cover',
-  height: '800px',
+  height: '730px',
   position: 'relative',
 }
 
