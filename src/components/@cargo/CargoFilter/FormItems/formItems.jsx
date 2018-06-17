@@ -45,7 +45,6 @@ export default {
       id="time"
       type="time"
       fullWidth
-      initial="18:30"
       InputLabelProps={{ shrink: true }}
       inputProps={{ step: 300 }}
     />,
@@ -58,7 +57,6 @@ export default {
       label="Дата"
       fullWidth
       type="date"
-      initial={moment().format('YYYY-MM-DD')}
       InputLabelProps={{
         shrink: true,
       }}
@@ -73,7 +71,6 @@ export default {
       fullWidth
       name="date_to"
       type="date"
-      initial={moment().format('YYYY-MM-DD')}
       InputLabelProps={{
         shrink: true,
       }}
