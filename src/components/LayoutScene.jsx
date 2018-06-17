@@ -4,7 +4,6 @@ import CargoCreateScene from './@cargo-create/CargoCreateScene'
 
 const LayoutScene = () =>
   <main>
-    <Header />
     <Switch>
       <Route path="/cargo" component={CargoCreateScene} />
     </Switch>

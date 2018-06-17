@@ -5,8 +5,8 @@ import Container from '../Container'
 import CreateScene from './@create/CreateScene'
 import CreatedScene from './@created/CreatedScene'
 
-const CargoCreateScene = ({ classes }) => (
-  <div className={classes.root}>
+const CargoCreateScene = ({}) => (
+  <div>
     <Container>
       <Switch>
         <Route exact path="/cargo/create" component={CreateScene} />
@@ -15,9 +15,5 @@ const CargoCreateScene = ({ classes }) => (
     </Container>
   </div>
 )
-
-CargoCreateScene.propTypes = {
-  classes: PropTypes.object.isRequired,
-}
 
 export default CargoCreateScene
