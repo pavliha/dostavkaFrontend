@@ -5,6 +5,7 @@ import Card from '@material-ui/core/es/Card/Card'
 import formItems from './formItems'
 import FormItem from './FormItem'
 import connector from '../../connector'
+import Button from '@material-ui/core/es/Button/Button'
 
 const styles = theme => ({})
 
@@ -20,6 +21,7 @@ class CargoForm extends React.Component {
     const { classes, selected } = this.props
     return (
       <Card className={classes.root}>
+
         {selected.map((itemName, index) =>
           <FormItem
             key={index}
@@ -27,6 +29,7 @@ class CargoForm extends React.Component {
             {formItems[itemName].component}
           </FormItem>
         )}
+        <Button variant="raised" color="primary" fullWidth>Добавить груз</Button>
       </Card>
     )
 
