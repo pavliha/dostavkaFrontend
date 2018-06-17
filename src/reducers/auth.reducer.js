@@ -3,6 +3,11 @@ import {
   REGISTER_USER_PENDING,
   REGISTER_USER_FULFILLED,
   REGISTER_USER_REJECTED,
+
+  LOGIN_USER,
+  LOGIN_USER_FULFILLED,
+  LOGIN_USER_PENDING,
+  LOGIN_USER_REJECTED,
 } from '../actions/auth.action'
 
 const initialState = {
@@ -37,6 +42,35 @@ const authReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         error: payload,
+        errors: payload,
+        loading: false,
+
+      }
+    }
+    case LOGIN_USER: {
+      return {
+        ...state,
+        user: payload,
+      }
+    }
+
+    case LOGIN_USER_PENDING: {
+      return {
+        ...state,
+        loading: true,
+      }
+    }
+    case LOGIN_USER_FULFILLED: {
+      return {
+        ...state,
+        user: payload,
+        loading: false,
+      }
+    }
+    case LOGIN_USER_REJECTED: {
+      return {
+        ...state,
+        error: true,
         errors: payload,
         loading: false,
 
