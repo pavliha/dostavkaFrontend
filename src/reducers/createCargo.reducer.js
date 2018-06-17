@@ -1,4 +1,4 @@
-import { ADD_FORM_ITEM, REMOVE_FORM_ITEM } from '../actions/createCargo.action'
+import { ADD_FORM_ITEM, REMOVE_FORM_ITEM, SUBMIT_FORM } from '../actions/createCargo.action'
 
 const initialState = {
   badges: [
@@ -37,6 +37,10 @@ const addCargo = (state = initialState, { type, payload }) => {
         ...state,
         selected: selected.filter((filter) => filter !== payload),
       }
+    }
+
+    case SUBMIT_FORM: {
+
     }
 
     default: {

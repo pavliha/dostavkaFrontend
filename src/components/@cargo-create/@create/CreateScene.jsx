@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/es/Grid/Grid'
 import CargoForm from './CargoForm'
 import Container from '../../Container'
+import MyMaps from './MyMaps'
 
 const styles = theme => ({
   root: {
@@ -21,6 +22,11 @@ const styles = theme => ({
     color: theme.palette.error.dark,
   },
 
+  map: {
+    paddingTop: theme.spacing.size4,
+    borderRadius: 3,
+  }
+
 })
 
 const CreateScene = ({ classes }) =>
@@ -29,6 +35,9 @@ const CreateScene = ({ classes }) =>
       <Grid container>
         <Grid item md={5}>
           <CargoForm />
+        </Grid>
+        <Grid item md={7} className={classes.map}>
+          <MyMaps />
         </Grid>
       </Grid>
     </Container>
