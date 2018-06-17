@@ -54,7 +54,6 @@ class LoginCard extends React.Component {
   showHelperError = (fieldName) => {
     const { errors, touched } = this.props
 
-
     return (touched[fieldName] && errors[fieldName]) || this.serverError(fieldName)
   }
 
@@ -65,32 +64,34 @@ class LoginCard extends React.Component {
       <Card className={classes.root}>
         <form onSubmit={this.handleSubmit}>
           <CardContent className={classes.inputGroup}>
-            <Typography variant="subheading">Введите email:</Typography>
-            <TextField
-              className={classes.input}
-              fullWidth
-              error={this.hasError('email')}
-              helperText={this.showHelperError('email')}
-              type="email"
-              name="email"
-              label="Email"
-              value={values.email}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
+            <div className={classes.input}>
+              <Typography variant="subheading">Введите email:</Typography>
+              <TextField
+                fullWidth
+                error={this.hasError('email')}
+                helperText={this.showHelperError('email')}
+                type="email"
+                name="email"
+                label="Email"
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+            </div>
             <Typography variant="subheading">Введите пароль:</Typography>
-            <TextField
-              className={classes.input}
-              fullWidth
-              name="password"
-              error={this.hasError('password')}
-              helperText={this.showHelperError('password')}
-              type="password"
-              label="Пароль"
-              value={values.password}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
+            <div className={classes.input}>
+              <TextField
+                fullWidth
+                name="password"
+                error={this.hasError('password')}
+                helperText={this.showHelperError('password')}
+                type="password"
+                label="Пароль"
+                value={values.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+            </div>
           </CardContent>
           <CardActions>
             <Button
