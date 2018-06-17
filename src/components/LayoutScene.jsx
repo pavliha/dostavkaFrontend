@@ -4,9 +4,11 @@ import CargoCreateScene from './@cargo-create/CargoCreateScene'
 import RegisterScene from './@register/RegisterScene'
 import withTheme from '../utils/withTheme'
 import LoginScene from './@login/LoginScene'
+import Header from './Header'
 
 const LayoutScene = () =>
   <main>
+    <Header />
     <Switch>
       <Route path="/cargo" component={CargoCreateScene} />
       <Route path="/register" component={RegisterScene} />
