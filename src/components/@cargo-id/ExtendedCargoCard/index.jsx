@@ -12,6 +12,23 @@ import connector from '../connector'
 import LargePictureCargoBadge from './LargePictureCargoBadge'
 import InfoTable from './InfoTable'
 import CargoBadge from '../../CargoBadges/CargoBadge'
+import Modal from '@material-ui/core/es/Modal/Modal'
+import Avatar from '@material-ui/core/es/Avatar/Avatar'
+
+function rand() {
+  return Math.round(Math.random() * 20) - 10
+}
+
+function getModalStyle() {
+  const top = 50 + rand()
+  const left = 50 + rand()
+
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+  }
+}
 
 const styles = theme => ({
   root: {
@@ -39,71 +56,120 @@ const styles = theme => ({
   description: {
     padding: theme.spacing.size1,
   },
+
+  primaryPicture: {
+    borderRadius: 3,
+    width: 255,
+    height: 255,
+    background: 'rgba(0,0,0,0.1)',
+  },
+
+  paper: {
+    position: 'absolute',
+    width: theme.spacing.unit * 70,
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing.unit * 4,
+  },
+
 })
 
-const ExtendedCargoCard = ({ classes, cargo }) => {
-  const {
-    id,
-    from,
-    to,
-    pictures,
-    description,
-    crosses_border,
-    distance,
-    primary_picture,
-    title,
-    updated_at,
-    ...rest
-  } = cargo
+class ExtendedCargoCard extends React.Component {
 
-  const other = Object.keys(rest).map(key => ({ key, value: rest[key] }))
+  state = {
+    open: false,
+    clickedId: 0,
+  }
+  handleOpen = () => {
+    this.setState({ open: true })
+  }
 
-  return (
-    <Card className={classes.root} key={id}>
-      <Grid spacing={8} container>
-        <Grid item xs={8}>
-          <Grid container alignItems="center">
-            <Grid item xs={7}>
-              <Typography gutterBottom variant="headline">
-                {title}
-              </Typography>
+  handleClose = () => {
+    this.setState({ open: false })
+  }
+
+  render() {
+    const { classes, cargo } = this.props
+
+    const {
+      id,
+      from,
+      to,
+      pictures,
+      description,
+      crosses_border,
+      distance,
+      primary_picture,
+      title,
+      updated_at,
+      ...rest
+    } = cargo
+
+    const other = Object.keys(rest).map(key => ({ key, value: rest[key] }))
+
+    return (
+      <Card className={classes.root} key={id}>
+        <Grid spacing={8} container>
+          <Grid item xs={8}>
+            <Grid container alignItems="center">
+              <Grid item xs={7}>
+                <Typography gutterBottom variant="headline">
+                  {title}
+                </Typography>
+              </Grid>
             </Grid>
+            <div className={classes.locations}>
+              <div className={classes.location}>
+                <Icon>send</Icon>
+                <Typography className={classes.location_text}>{from.address}</Typography>
+              </div>
+              <div className={classes.location}>
+                <Icon className={classes.rotated}>call_missed_outgoing</Icon>
+                <Typography className={classes.location_text}>{to.address}</Typography>
+              </div>
+            </div>
+            <CargoBadge label="дата отправления" value={moment(from.date).format('DD MMMM YYYY')} />
+            <CargoBadge label="дата прибытия" value={moment(to.date).format('DD MMMM YYYY')} />
+            <CargoBadges extended badges={other} />
+
+            <LargePictureCargoBadge pictures={pictures} />
+
+            <div className={classes.description}>
+              <Typography variant="subheading">Описание:</Typography>
+              <Typography variant="body1">
+                {description}
+              </Typography>
+            </div>
           </Grid>
-          <div className={classes.locations}>
-            <div className={classes.location}>
-              <Icon>send</Icon>
-              <Typography className={classes.location_text}>{from.address}</Typography>
-            </div>
-            <div className={classes.location}>
-              <Icon className={classes.rotated}>call_missed_outgoing</Icon>
-              <Typography className={classes.location_text}>{to.address}</Typography>
-            </div>
-          </div>
-          <CargoBadge label="дата отправления" value={moment(from.date).format('DD MMMM YYYY')} />
-          <CargoBadge label="дата прибытия" value={moment(to.date).format('DD MMMM YYYY')} />
-          <CargoBadges extended badges={other} />
-
-          <LargePictureCargoBadge pictures={pictures} />
-
-          <div className={classes.description}>
-            <Typography variant="subheading">Описание:</Typography>
-            <Typography variant="body1">
-              {description}
-            </Typography>
-          </div>
+          <Grid item xs={4}>
+            <Avatar
+              onClick={this.handleOpen}
+              className={classes.primaryPicture}
+              src={primary_picture}
+              alt="primary"
+              width="100%"
+            />
+            <Modal
+              aria-labelledby="simple-modal-title"
+              aria-describedby="simple-modal-description"
+              open={this.state.open}
+              onClose={this.handleClose}
+            >
+              <div style={getModalStyle()} className={classes.paper}>
+                <img src={primary_picture} width="100%" />
+              </div>
+            </Modal>
+            <InfoTable
+              id={id}
+              distance={distance}
+              countryBorder={crosses_border}
+              datetime={updated_at}
+            />
+          </Grid>
         </Grid>
-        <Grid item xs={4}>
-          <img src={primary_picture} alt="primary" width="100%" />
-          <InfoTable
-            id={id}
-            distance={distance}
-            countryBorder={crosses_border}
-            datetime={updated_at}
-          />
-        </Grid>
-      </Grid>
-    </Card>
-  )
+      </Card>
+    )
+  }
 }
 
 ExtendedCargoCard.propTypes = {

@@ -24,7 +24,6 @@ class ShowCargoScene extends React.Component {
 
     if (!cargo) return 'Груза не найдено'
 
-    debugger
     return (
       <Container>
         <Grid container spacing={24} className={classes.root}>
