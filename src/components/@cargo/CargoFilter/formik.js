@@ -1,8 +1,7 @@
 import Yup from 'yup'
 import moment from 'moment'
+import clean from 'lodash-clean'
 import { withFormik } from 'formik'
-import * as createCargoAction from '../../../actions/createCargo.action'
-import store from '../../../store'
 
 export default withFormik({
   mapPropsToValues: () => ({
@@ -11,17 +10,23 @@ export default withFormik({
       formatted_address: '',
       geometry: {
         location: {
-          lat: 0,
-          lng: 0,
+          lat: () => 0,
+          lng: () => 0,
         },
       },
     },
     to: {
       formatted_address: '',
+      geometry: {
+        location: {
+          lat: () => 0,
+          lng: () => 0,
+        },
+      },
     },
-    time: '18:30',
-    date_from: moment().format('YYYY-MM-DD'),
-    date_to: moment().format('YYYY-MM-DD'),
+    time: '',
+    date_from: '',
+    date_to: '',
     pictures: [],
     dimensions: '',
     weight: '',
@@ -34,9 +39,9 @@ export default withFormik({
   // Custom sync validation
 
   validationSchema: Yup.object().shape({
-    title: Yup.string().required('Это поле является обязательным для заполнения!'),
-    from: Yup.object().required('Это поле является обязательным для заполнения!'),
-    to: Yup.object().required('Это поле является обязательным для заполнения!'),
+    title: Yup.string(),
+    from: Yup.object(),
+    to: Yup.object(),
     date_from: Yup.date(),
     date_to: Yup.date(),
     dimensions: Yup.string(),
@@ -49,36 +54,38 @@ export default withFormik({
 
   handleSubmit: (values, { props, setSubmitting }) => {
     console.log(values)
-    const form = {
+    let form = {
       title: values.title,
       from: {
         address: values.from.formatted_address,
-        lat: values.from.geometry.location.lat(),
-        lng: values.from.geometry.location.lng(),
+        lat: values.from.geometry.location.lat() ? values.from.geometry.location.lat() : '',
+        lng: values.from.geometry.location.lat() ? values.from.geometry.location.lng() : '',
         placeId: values.from.place_id,
         date: values.date_from,
         time: values.time,
       },
       to: {
         address: values.to.formatted_address,
-        lat: values.to.geometry.location.lat(),
-        lng: values.to.geometry.location.lng(),
+        lat: values.from.geometry.location.lat() ? values.from.geometry.location.lat() : '',
+        lng: values.from.geometry.location.lat() ? values.from.geometry.location.lng() : '',
         placeId: values.to.place_id,
         date: values.date_to,
         time: values.time,
       },
       primary_picture: values.pictures[0],
       pictures: values.pictures,
-      weight: `${values.weight} кг`,
+      weight: values.weight && `${values.weight} кг`,
       dimensions: values.dimensions,
-      volume: `${values.volume} m³`,
+      volume: values.volume && `${values.volume} m³`,
       description: values.description,
       transport_type: values.transport_type,
-      payment: `${values.payment} грн`,
+      payment: values.payment && `${values.payment} грн`,
     }
 
-    store.dispatch(createCargoAction.submit(form))
-    props.history.push('/cargo/created')
+    form = clean(form)
+
+    props.actions.cargo.filter(form)
+
     setSubmitting(false)
   },
 
