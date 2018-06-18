@@ -43,10 +43,7 @@ const styles = theme => ({
   },
 })
 
-
-
-class CargoCard extends React.Component{
-
+class CargoCard extends React.Component {
 
   render() {
     const { classes, cargo } = this.props
@@ -83,7 +80,9 @@ class CargoCard extends React.Component{
             <CargoBadges badges={other} />
           </Grid>
           <Grid item xs={3}>
-            <Avatar className={classes.primaryPicture} src={primary_picture} alt="primary" width="100%" />
+            <Link to={`/cargo/${id}`}>
+              <Avatar className={classes.primaryPicture} src={primary_picture} alt="primary"
+                      width="100%" /> </Link>
             <Link to={`/cargo/${id}`}>
               <Button fullWidth color="primary" variant="raised" className={classes.detailsButton}>
                 Подробее
@@ -92,13 +91,13 @@ class CargoCard extends React.Component{
           </Grid>
         </Grid>
       </Card>
-  )
+    )
   }
-  }
+}
 
-  CargoCard.propTypes = {
-    cargo: PropTypes.object.isRequired,
-    classes: PropTypes.object.isRequired,
-  }
+CargoCard.propTypes = {
+  cargo: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired,
+}
 
-  export default (withStyles(styles)(CargoCard))
+export default (withStyles(styles)(CargoCard))
