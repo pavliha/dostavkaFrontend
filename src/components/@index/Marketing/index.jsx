@@ -11,6 +11,7 @@ import TextInfo from './TextInfo'
 const styles = {
   center: {
     textAlign: 'center',
+    color: 'white',
   },
   card: {
     width: 320,
