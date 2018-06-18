@@ -40,10 +40,7 @@ const UserCard = ({ classes, cargo }) =>
       <Avatar className={classes.user_avatar} src="http://lorempixel.com/200/200/" />
       <div className={classes.user_info}>
         <Typography align="center" variant="headline">
-          {cargo.user.full_name}
-        </Typography>
-        <Typography align="center" variant="caption">
-          {cargo.user.succeeded} успешно переданых грузов
+          {cargo.user.name}
         </Typography>
       </div>
     </div>
@@ -64,7 +61,7 @@ UserCard.propTypes = {
   cargo: PropTypes.shape({
     user: PropTypes.shape({
       avatar_url: PropTypes.string,
-      full_name: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
       succeeded: PropTypes.number,
       phone: PropTypes.string.isRequired,
       email: PropTypes.string.isRequired,
