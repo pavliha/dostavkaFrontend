@@ -25,6 +25,7 @@ const initialState = {
   required: ['title', 'from', 'to'],
   selected: ['title', 'from', 'to'],
   loading: false,
+  success: false,
   error: false,
   map: []
 }
@@ -60,7 +61,7 @@ const addCargo = (state = initialState, { type, payload }) => {
     case CREATE_CARGO_FULFILLED: {
       return {
         ...state,
-        response: payload,
+        success: payload,
       }
     }
 
@@ -72,9 +73,7 @@ const addCargo = (state = initialState, { type, payload }) => {
     }
 
     case UPDATE_MAP: {
-
       const map = { ...state.map }
-
       map.from = payload.name === 'from' ? payload.value : map.from
       map.to = payload.name === 'to' ? payload.value : map.to
 

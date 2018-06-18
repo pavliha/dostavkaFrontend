@@ -32,12 +32,13 @@ const FormItems = ({ required, selected, actions, form, hasError, showHelperErro
     })(component)
 
     if (name === 'from' || name === 'to') {
+      debugger
       Input = decorator({
         value: values[name],
         error: hasError(name),
-        onChange: (name, value) => {
-          actions.cargoForm.updateMap(name, value)
-          setFieldValue(name, value)
+        onChange: (...e) => {
+          actions.cargoForm.updateMap(...e)
+          setFieldValue(...e)
         },
         onBlur: setFieldTouched,
         helperText: showHelperError(name),

@@ -1,8 +1,7 @@
 import Yup from 'yup'
 import moment from 'moment'
+import clean from 'lodash-clean'
 import { withFormik } from 'formik'
-import * as createCargoAction from '../../../../actions/createCargo.action'
-import store from '../../../../store'
 
 export default withFormik({
   mapPropsToValues: () => ({
@@ -11,13 +10,19 @@ export default withFormik({
       formatted_address: '',
       geometry: {
         location: {
-          lat: 0,
-          lng: 0,
+          lat: () => 0,
+          lng: () => 0,
         },
       },
     },
     to: {
       formatted_address: '',
+      geometry: {
+        location: {
+          lat: () => 0,
+          lng: () => 0,
+        },
+      },
     },
     time: '18:30',
     date_from: moment().format('YYYY-MM-DD'),
@@ -50,7 +55,7 @@ export default withFormik({
 
   handleSubmit: (values, { props, setSubmitting }) => {
     console.log(values)
-    const form = {
+    let form = {
       title: values.title,
       from: {
         address: values.from.formatted_address,
@@ -78,8 +83,16 @@ export default withFormik({
       payment: `${values.payment} грн`,
     }
 
-    store.dispatch(createCargoAction.submit(form))
-    props.history.push('/cargo/created')
+    form = clean(form)
+
+    debugger
+    props.actions.cargoForm.submit(form)
+
+
+
+    if (props.success) {
+      props.history.push('/cargo/created')
+    }
     setSubmitting(false)
   },
 

@@ -10,6 +10,7 @@ import Button from '@material-ui/core/es/Button/Button'
 import AdditionalFormItems from './FormBadges'
 import FormItems from './FormItems'
 import formik from './formik'
+import connector from './connector'
 
 const style = theme => ({
   root: {
@@ -82,4 +83,4 @@ CargoForm.propTypes = {
   touched: PropTypes.object.isRequired,
 }
 
-export default withStyles(style)(withRouter(formik(CargoForm)))
+export default withStyles(style)(connector(withRouter(formik(CargoForm))))
