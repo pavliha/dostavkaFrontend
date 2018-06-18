@@ -51,7 +51,10 @@ class PictureCargoBadge extends React.Component {
   }
 
   render() {
-    const { classes, pictures } = this.props
+    let { classes, pictures } = this.props
+
+    pictures = pictures ? pictures : []
+
     return (
       <div>
         <CargoBadge
@@ -73,7 +76,7 @@ class PictureCargoBadge extends React.Component {
           onClose={this.handleClose}
         >
           <div style={getModalStyle()} className={classes.paper}>
-            <img src={pictures[this.state.clickedId].url} width="100%" />
+            <img src={pictures.length ? pictures[this.state.clickedId].url : null} width="100%" />
           </div>
         </Modal>
       </div>

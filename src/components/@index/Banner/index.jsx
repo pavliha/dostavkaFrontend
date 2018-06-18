@@ -7,16 +7,22 @@ import Background from './Background'
 import PrimaryTextInput from './PrimaryTextInput'
 import TransparentButton from './TransparentButton'
 import Container from '../../Container'
+import Button from '@material-ui/core/es/Button/Button'
 
 const Banner = () =>
   <Background>
     <Container>
-      <div style={{ height: 400 }} className="d-flex align-items-center">
+      <Grid container style={{ paddingTop: '200px' }} alignItems="center" spacing={24} justify="center">
+        <Grid item>
+          <Link to="/cargo"><Button variant="raised">Найти грузы</Button></Link>
+        </Grid>
+        <Grid item>
+          <Link to="/cargo/create"><Button variant="raised">Добавить груз</Button></Link>
+        </Grid>
+      </Grid>
+      <div style={{ height: 500 }} className="d-flex justify-content-center align-items-center">
         <section className="text-white pt-5 pb-5">
-          <Typography className="text-white" variant="display2" gutterBottom>
-            Transfer
-          </Typography>
-          <ul className="p-0 pl-3">
+          <ul className="p-0 pl-3 text-center" style={{ listStyleType: 'none' }}>
             <li>Прямая доставка грузов</li>
             <li>Это как Uber - только для грузов</li>
             <li>Доставка туда куда другие не доедут</li>
@@ -24,23 +30,7 @@ const Banner = () =>
           </ul>
         </section>
       </div>
-      <Grid container className="pt-5 pb-5" alignItems="center" spacing={24} justify="center">
-        <Grid item md={4} lg={3}>
-          <PrimaryTextInput
-            icon={<Icon>my_location</Icon>}
-            placeholder="Откуда забрать ваш груз?"
-          />
-        </Grid>
-        <Grid item md={4} lg={3}>
-          <PrimaryTextInput
-            icon={<Icon>my_location</Icon>}
-            placeholder="Куда отвезти ваш груз?"
-          />
-        </Grid>
-        <Grid item md={3} lg={2}>
-          <Link to="/cargo"><TransparentButton>доставить</TransparentButton></Link>
-        </Grid>
-      </Grid>
+
     </Container>
   </Background>
 
