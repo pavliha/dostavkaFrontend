@@ -12,7 +12,7 @@ const initialState = {
   loading: false,
 }
 
-const cargoListReducer = (state = initialState, { type, payload }) => {
+const cargoReducer = (state = initialState, { type, payload }) => {
   switch (type) {
 
     case LOAD_CARGO_PENDING: {
@@ -53,4 +53,4 @@ const cargoListReducer = (state = initialState, { type, payload }) => {
   }
 }
 
-export default cargoListReducer
+export default cargoReducer

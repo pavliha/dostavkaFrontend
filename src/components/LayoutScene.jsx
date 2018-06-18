@@ -8,6 +8,7 @@ import Header from './Header'
 import IndexScene from './@index/IndexScene'
 import Alert from './Alert'
 import CargoScene from './@cargo/CargoScene'
+import ShowCargoScene from './@cargo-id/ShowCargoScene'
 
 const LayoutScene = () =>
   <main>
@@ -17,6 +18,7 @@ const LayoutScene = () =>
       <Route path="/register" component={RegisterScene} />
       <Route path="/login" component={LoginScene} />
       <Route exact path="/cargo" component={CargoScene} />
+      <Route exact path="/cargo/:id" component={ShowCargoScene} />
       <Route path="/cargo" component={CargoCreateScene} />
     </Switch>
     <Alert />
