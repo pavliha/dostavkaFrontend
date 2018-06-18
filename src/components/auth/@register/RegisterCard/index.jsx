@@ -1,5 +1,6 @@
 import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
+import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Card from '@material-ui/core/es/Card/Card'
 import TextField from '@material-ui/core/es/TextField/TextField'
@@ -23,6 +24,7 @@ const styles = theme => ({
 })
 
 class RegisterCard extends React.Component {
+
   state = {
     isSubmited: false,
   }
@@ -31,6 +33,12 @@ class RegisterCard extends React.Component {
     this.setState({ isSubmited: true })
 
     handleSubmit(e)
+  }
+
+  componentDidUpdate() {
+    if (this.props.auth.user) {
+      this.props.history.push('/cargo')
+    }
   }
 
   serverError = (fieldName) => {
@@ -47,7 +55,7 @@ class RegisterCard extends React.Component {
     const { isSubmited } = this.state
     const { errors, touched } = this.props
 
-    return (!!errors[fieldName] && touched[fieldName] && isSubmited) || this.serverError(fieldName)
+    return (!!errors[fieldName] && touched[fieldName] && isSubmited) || !!this.serverError(fieldName)
   }
 
   showHelperError = (fieldName) => {
@@ -149,4 +157,4 @@ RegisterCard.propTypes = {
   auth: PropTypes.object.isRequired,
 }
 
-export default withStyles(styles)(registerFormik(connector(RegisterCard)))
+export default withStyles(styles)(connector(registerFormik(withRouter(RegisterCard))))

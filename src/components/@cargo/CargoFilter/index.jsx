@@ -5,14 +5,15 @@ import Card from '@material-ui/core/es/Card/Card'
 import { withStyles } from '@material-ui/core/styles'
 import { withRouter } from 'react-router-dom'
 import CardContent from '@material-ui/core/es/CardContent/CardContent'
+import CardActions from '@material-ui/core/es/CardActions/CardActions'
+import Button from '@material-ui/core/es/Button/Button'
 import AdditionalFormItems from './FormBadges'
 import FormItems from './FormItems'
 import formik from './formik'
+import connector from './connector'
 
 const style = theme => ({
-  root: {
-    margin: theme.spacing.size4,
-  },
+  root: {},
 })
 
 class CargoForm extends React.Component {
@@ -55,6 +56,18 @@ class CargoForm extends React.Component {
             />
             <AdditionalFormItems />
           </CardContent>
+          <CardActions>
+            <Button
+              fullWidth
+              type="submit"
+              variant="raised"
+              size="large"
+              color="primary"
+              disabled={form.isSubmitting}
+            >
+              Искать груз
+            </Button>
+          </CardActions>
         </form>
       </Card>
     )
@@ -68,4 +81,4 @@ CargoForm.propTypes = {
   touched: PropTypes.object.isRequired,
 }
 
-export default withStyles(style)(withRouter(formik(CargoForm)))
+export default withStyles(style)(connector(withRouter(formik(CargoForm))))

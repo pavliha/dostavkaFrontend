@@ -4,12 +4,12 @@ import Select from '@material-ui/core/es/Select/Select'
 import MenuItem from '@material-ui/core/es/MenuItem/MenuItem'
 import TextField from '@material-ui/core/es/TextField/TextField'
 import InputAdornment from '@material-ui/core/es/InputAdornment/InputAdornment'
-import Geosuggest from '../../../Geosuggest'
+import Geosuggest from '../../../Geosuggest/index'
 
 export default {
 
   title: {
-    label: 'Что у вас за груз?',
+    label: 'Искать по названию груза',
     component: <TextField
       name="title"
       fullWidth
@@ -19,9 +19,8 @@ export default {
   },
 
   from: {
-    label: 'Откуда забирать?',
+    label: 'Откуда едите?',
     component: <Geosuggest
-      id="from"
       name="from"
       fullWidth
       label="Адрес"
@@ -29,9 +28,8 @@ export default {
   },
 
   to: {
-    label: 'Куда отвезти?',
+    label: 'Куда едите?',
     component: <Geosuggest
-      id="to"
       name="to"
       fullWidth
       label="Адрес"
@@ -39,7 +37,7 @@ export default {
   },
 
   time: {
-    label: 'Во сколько время забрать груз?',
+    label: 'Во сколько время едите?',
     component: <TextField
       label="Время"
       id="time"
@@ -51,12 +49,13 @@ export default {
   },
 
   date_from: {
-    label: 'Какого числа забрать груз?',
+    label: 'Какого числа выезжаете?',
     component: <TextField
       id="date_from"
       label="Дата"
       fullWidth
       type="date"
+      initial={moment().format('YYYY-MM-DD')}
       InputLabelProps={{
         shrink: true,
       }}
@@ -78,12 +77,12 @@ export default {
   },
 
   dimensions: {
-    label: 'Какие габариты груза?',
+    label: 'Какие размеры подойдут?',
     component: <TextField name="dimensions" fullWidth label="Размеры" />,
   },
 
   weight: {
-    label: 'Какой вес?',
+    label: 'Какой вес возьмете?',
     component: <TextField
       name="weight"
       fullWidth
@@ -97,7 +96,7 @@ export default {
   },
 
   volume: {
-    label: 'Какой обьем?',
+    label: 'Какой обьем у вас поместится?',
     component: <TextField
       name="volume"
       fullWidth
@@ -110,15 +109,15 @@ export default {
   },
 
   description: {
-    label: 'Добавить описание',
+    label: 'Найти по описанию?',
     component: <TextField name="description" fullWidth label="Описание" />,
   },
 
   transport_type: {
-    label: 'Какой тип траспорта нужен?',
+    label: 'Какой у вас тип траспорта?',
     component: (
       <Select
-        id="transport-input"
+        id="transport_type"
         label="Выбрать"
         fullWidth
         inputProps={{
@@ -134,7 +133,7 @@ export default {
   },
 
   payment: {
-    label: 'Сколько планируете заплатить?',
+    label: 'Сколько планируете заработать?',
     component: <TextField
       name="payment"
       fullWidth

@@ -1,7 +1,7 @@
 import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
-import RegisterCard from './LoginCard/index'
+import LoginCard from './LoginCard/index'
 
 const styles = theme => ({
   root: {
@@ -13,7 +13,7 @@ const styles = theme => ({
 })
 const LoginScene = ({ classes }) =>
   <div className={classes.root}>
-    <RegisterCard />
+    <LoginCard />
   </div>
 
 LoginScene.propTypes = {

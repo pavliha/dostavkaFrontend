@@ -53,6 +53,7 @@ class Geosuggest extends Component {
       <TextField
         {...props}
         value={this.state.value}
+        helperText={props.helperText && props.helperText.formatted_address}
         onChange={this.handleChange}
         onBlur={this.handleBlur}
       />

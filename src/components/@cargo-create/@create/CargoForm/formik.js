@@ -36,12 +36,18 @@ export default withFormik({
 
   }),
 
+  validateOnBlur: false,
+
   // Custom sync validation
 
   validationSchema: Yup.object().shape({
     title: Yup.string().required('Это поле является обязательным для заполнения!'),
-    from: Yup.object().required('Это поле является обязательным для заполнения!'),
-    to: Yup.object().required('Это поле является обязательным для заполнения!'),
+    from: Yup.object().shape({
+      formatted_address: Yup.string().required('Это поле является обязательным для заполнения!'),
+    }),
+    to: Yup.object().shape({
+      formatted_address: Yup.string().required('Это поле является обязательным для заполнения!'),
+    }),
     date_from: Yup.date(),
     date_to: Yup.date(),
     pictures: Yup.array(),
@@ -54,7 +60,6 @@ export default withFormik({
   }),
 
   handleSubmit: (values, { props, setSubmitting }) => {
-    console.log(values)
     let form = {
       title: values.title,
       from: {
@@ -75,24 +80,18 @@ export default withFormik({
       },
       primary_picture: values.pictures[0],
       pictures: values.pictures,
-      weight: `${values.weight} кг`,
+      weight: values.weight && `${values.weight} кг`,
       dimensions: values.dimensions,
-      volume: `${values.volume} m³`,
+      volume: values.volume && `${values.volume} m³`,
       description: values.description,
       transport_type: values.transport_type,
-      payment: `${values.payment} грн`,
+      payment: values.payment && `${values.payment} грн`,
     }
 
     form = clean(form)
 
-    debugger
     props.actions.cargoForm.submit(form)
 
-
-
-    if (props.success) {
-      props.history.push('/cargo/created')
-    }
     setSubmitting(false)
   },
 

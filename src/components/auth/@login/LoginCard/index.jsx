@@ -1,5 +1,7 @@
+/* eslint-disable react/sort-comp */
 import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
+import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Card from '@material-ui/core/es/Card/Card'
 import TextField from '@material-ui/core/es/TextField/TextField'
@@ -34,6 +36,12 @@ class LoginCard extends React.Component {
     handleSubmit(e)
   }
 
+  componentDidUpdate() {
+    if (this.props.auth.user) {
+      this.props.history.push('/cargo')
+    }
+  }
+
   serverError = (fieldName) => {
     const { auth } = this.props
     const serverErrors = {}
@@ -48,7 +56,7 @@ class LoginCard extends React.Component {
     const { isSubmited } = this.state
     const { errors, touched } = this.props
 
-    return (!!errors[fieldName] && touched[fieldName] && isSubmited) || this.serverError(fieldName)
+    return (!!errors[fieldName] && touched[fieldName] && isSubmited) || !!this.serverError(fieldName)
   }
 
   showHelperError = (fieldName) => {
@@ -122,4 +130,4 @@ LoginCard.propTypes = {
   isSubmitting: PropTypes.bool.isRequired,
 }
 
-export default withStyles(styles)(loginFormik(connector(LoginCard)))
+export default withStyles(styles)(connector(loginFormik(withRouter(LoginCard))))

@@ -1,7 +1,5 @@
 import { withFormik } from 'formik'
 import * as Yup from 'yup'
-import store from '../../../../store'
-import * as userActions from '../../../../actions/auth.action'
 
 const registerFormik = withFormik({
   validationSchema: Yup.object().shape({
@@ -28,9 +26,8 @@ const registerFormik = withFormik({
     password: '',
   }),
 
-  handleSubmit: (values, { setSubmitting }) => {
-    // eslint-disable-next-line no-console
-    store.dispatch(userActions.register(values))
+  handleSubmit: (form, { props, setSubmitting }) => {
+    props.actions.auth.register(form)
     setSubmitting(false)
   },
   displayName: 'RegisterForm',

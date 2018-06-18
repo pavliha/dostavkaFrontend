@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
 import InputAdornment from '@material-ui/core/InputAdornment'
+import Geosuggest from '../../Geosuggest'
 
 const styles = theme => ({
   root: {
@@ -32,27 +33,29 @@ const styles = theme => ({
 })
 
 const PrimaryTextInput = ({ classes, icon, placeholder, ...rest }) =>
-  <TextField
-    fullWidth
-    placeholder={placeholder}
-    {...rest}
-    InputProps={{
-      startAdornment: (
-        <InputAdornment classes={{ root: classes.adornment }} position="start">
-          {icon}
-        </InputAdornment>
-      ),
-      disableUnderline: true,
-      classes: {
-        root: classes.root,
-        input: classes.input,
-      },
-    }}
-    InputLabelProps={{
-      shrink: true,
-      className: classes.formLabel,
-    }}
-  />
+  <div>
+    <TextField
+      fullWidth
+      placeholder={placeholder}
+      {...rest}
+      InputProps={{
+        startAdornment: (
+          <InputAdornment classes={{ root: classes.adornment }} position="start">
+            {icon}
+          </InputAdornment>
+        ),
+        disableUnderline: true,
+        classes: {
+          root: classes.root,
+          input: classes.input,
+        },
+      }}
+      InputLabelProps={{
+        shrink: true,
+        className: classes.formLabel,
+      }}
+    />
+  </div>
 
 PrimaryTextInput.propTypes = {
   placeholder: PropTypes.string,

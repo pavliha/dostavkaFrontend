@@ -10,6 +10,7 @@ import CargoScene from './@cargo/CargoScene'
 import ShowCargoScene from './@cargo-id/ShowCargoScene'
 import CreateScene from './@cargo-create/@create/CreateScene'
 import CreatedScene from './@cargo-create/@created/CreatedScene'
+import AuthRoute from './auth/AuthRoute'
 
 const LayoutScene = () =>
   <main>
@@ -19,8 +20,8 @@ const LayoutScene = () =>
       <Route exact path="/register" component={RegisterScene} />
       <Route exact path="/login" component={LoginScene} />
       <Route exact path="/cargo" component={CargoScene} />
-      <Route exact path="/cargo/create" component={CreateScene} />
-      <Route exact path="/cargo/created" component={CreatedScene} />
+      <AuthRoute exact path="/cargo/create" component={CreateScene} />
+      <AuthRoute exact path="/cargo/created" component={CreatedScene} />
       <Route exact path="/cargo/:id" component={ShowCargoScene} />
     </Switch>
     <Alert />

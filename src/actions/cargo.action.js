@@ -21,7 +21,7 @@ export const load = () => ({
 })
 
 // noinspection JSUnusedGlobalSymbols
-export const filter = ({ page, filter }) => ({
+export const filter = (filter) => ({
   type: LOAD_CARGO,
-  payload: Cargo.paginate({ page, filter }),
+  payload: Cargo.paginate({ filter }),
 })

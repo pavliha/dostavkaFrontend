@@ -22,13 +22,14 @@ class ShowCargoScene extends React.Component {
   render() {
     const { classes, cargo } = this.props
 
-    if (!cargo) return null
+    if (!cargo) return 'Груза не найдено'
 
+    debugger
     return (
       <Container>
         <Grid container spacing={24} className={classes.root}>
           <Grid item xs={4}>
-            <UserCard />
+            <UserCard cargo={cargo} />
           </Grid>
           <Grid item xs={8}>
             <ExtendedCargoCard />

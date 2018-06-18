@@ -1,4 +1,6 @@
 import Cache from '../services/Cache'
+import Token from '../services/Token'
+
 import {
   LOGIN_USER_FULFILLED,
   LOGIN_USER_PENDING,
@@ -11,6 +13,7 @@ import {
 
 const initialState = {
   user: null,
+  token: Token.get(),
   errors: [],
   error: false,
   loading: false,
