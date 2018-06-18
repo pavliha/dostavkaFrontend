@@ -55,7 +55,7 @@ class LoginCard extends React.Component {
     const { isSubmited } = this.state
     const { errors, touched } = this.props
 
-    return (!!errors[fieldName] && touched[fieldName] && isSubmited) || this.serverError(fieldName)
+    return (!!errors[fieldName] && touched[fieldName] && isSubmited) || !!this.serverError(fieldName)
   }
 
   showHelperError = (fieldName) => {
@@ -129,4 +129,4 @@ LoginCard.propTypes = {
   isSubmitting: PropTypes.bool.isRequired,
 }
 
-export default withStyles(styles)(loginFormik(connector(withRouter(LoginCard))))
+export default withStyles(styles)(connector(loginFormik(withRouter(LoginCard))))

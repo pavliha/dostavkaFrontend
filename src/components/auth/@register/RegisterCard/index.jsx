@@ -55,7 +55,7 @@ class RegisterCard extends React.Component {
     const { isSubmited } = this.state
     const { errors, touched } = this.props
 
-    return (!!errors[fieldName] && touched[fieldName] && isSubmited) || this.serverError(fieldName)
+    return (!!errors[fieldName] && touched[fieldName] && isSubmited) || !!this.serverError(fieldName)
   }
 
   showHelperError = (fieldName) => {
@@ -157,4 +157,4 @@ RegisterCard.propTypes = {
   auth: PropTypes.object.isRequired,
 }
 
-export default withStyles(styles)(registerFormik(connector(withRouter(RegisterCard))))
+export default withStyles(styles)(connector(registerFormik(withRouter(RegisterCard))))
