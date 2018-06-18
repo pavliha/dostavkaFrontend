@@ -10,7 +10,7 @@ import Button from '@material-ui/core/es/Button/Button'
 import AdditionalFormItems from './FormBadges'
 import FormItems from './FormItems'
 import connector from './connector'
-import formik from '../../../@cargo/CargoFilter/formik'
+import formik from './formik'
 
 const style = theme => ({
   root: {
@@ -22,6 +22,12 @@ class CargoForm extends React.Component {
 
   state = {
     isSubmited: false,
+  }
+
+  componentDidUpdate() {
+    if (this.props.success) {
+      this.props.history.push('/cargo/created')
+    }
   }
 
   handleSubmit = (e) => {
