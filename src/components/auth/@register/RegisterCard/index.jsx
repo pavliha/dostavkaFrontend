@@ -9,6 +9,7 @@ import Button from '@material-ui/core/es/Button/Button'
 import Typography from '@material-ui/core/es/Typography/Typography'
 import registerFormik from './registerFormik'
 import connector from '../../connector'
+import { withRouter } from 'react-router-dom'
 
 const styles = theme => ({
   root: {
@@ -23,6 +24,7 @@ const styles = theme => ({
 })
 
 class RegisterCard extends React.Component {
+
   state = {
     isSubmited: false,
   }
@@ -31,6 +33,12 @@ class RegisterCard extends React.Component {
     this.setState({ isSubmited: true })
 
     handleSubmit(e)
+  }
+
+  componentDidUpdate() {
+    if (this.props.auth.user) {
+      this.props.history.push('/cargo')
+    }
   }
 
   serverError = (fieldName) => {
@@ -149,4 +157,4 @@ RegisterCard.propTypes = {
   auth: PropTypes.object.isRequired,
 }
 
-export default withStyles(styles)(registerFormik(connector(RegisterCard)))
+export default withStyles(styles)(registerFormik(connector(withRouter(RegisterCard))))
