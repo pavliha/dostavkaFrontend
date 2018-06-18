@@ -17,7 +17,6 @@ const style = theme => ({
 })
 
 class CargoForm extends React.Component {
-
   state = {
     isSubmited: false,
   }
