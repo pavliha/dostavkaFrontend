@@ -11,6 +11,7 @@ import ShowCargoScene from './@cargo-id/ShowCargoScene'
 import CreateScene from './@cargo-create/@create/CreateScene'
 import CreatedScene from './@cargo-create/@created/CreatedScene'
 import AuthRoute from './auth/AuthRoute'
+import Footer from './Footer'
 
 const LayoutScene = () =>
   <main>
@@ -25,6 +26,7 @@ const LayoutScene = () =>
       <Route exact path="/cargo/:id" component={ShowCargoScene} />
     </Switch>
     <Alert />
+    <Footer />
   </main>
 
 LayoutScene.propTypes = {}
