@@ -1,10 +1,40 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/es/Typography/Typography'
 import { Link } from 'react-router-dom'
 import Button from '@material-ui/core/es/Button/Button'
 
-const CreateScene = ({ classes }) =>
+const styles = theme => ({
+  root: {
+
+    height: 400,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    // color: theme.palette.common.white,
+    background: theme.palette.primary.main,
+    flexGrow: 1,
+  },
+  flex: {
+    flex: 1,
+  },
+  main: {
+    textAlign: 'center',
+  },
+  text: {
+    color: theme.palette.common.white,
+  },
+  color: {
+    '&::-webkit-input-placeholder': {
+      color: theme.palette.error.dark,
+    },
+    color: theme.palette.error.dark,
+  },
+
+})
+
+const CreatedScene = ({ classes }) =>
   <div className={classes.root}>
     <div className={classes.main}>
       <Typography
@@ -22,8 +52,8 @@ const CreateScene = ({ classes }) =>
     </div>
   </div>
 
-CreateScene.propTypes = {
+CreatedScene.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
-export default CreateScene
+export default withStyles(styles)(CreatedScene)
