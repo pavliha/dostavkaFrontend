@@ -154,6 +154,7 @@ export default {
     component: <TextField
       name="payment"
       fullWidth
+      type="number"
       label="Сумма"
       InputProps={{
         endAdornment: <InputAdornment position="end">грн</InputAdornment>,

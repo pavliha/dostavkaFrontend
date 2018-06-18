@@ -2,6 +2,7 @@ import Yup from 'yup'
 import moment from 'moment'
 import clean from 'lodash-clean'
 import { withFormik } from 'formik'
+import * as alertAction from '../../../../actions/alert.action'
 
 export default withFormik({
   mapPropsToValues: () => ({
@@ -92,6 +93,8 @@ export default withFormik({
     form = clean(form)
 
     props.actions.cargoForm.submit(form)
+
+    props.dispatch(alertAction.show('Ваш груз был добавлен'))
 
     setSubmitting(false)
   },

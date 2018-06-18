@@ -4,20 +4,82 @@ import { withStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
 import Avatar from '@material-ui/core/es/Avatar/Avatar'
 import CargoBadge from '../../../CargoBadges/CargoBadge'
+import Modal from '@material-ui/core/es/Modal/Modal'
+
+function rand() {
+  return Math.round(Math.random() * 20) - 10
+}
+
+function getModalStyle() {
+  const top = 50 + rand()
+  const left = 50 + rand()
+
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+  }
+}
 
 const styles = theme => ({
   photo: {
     borderRadius: '5%',
     margin: 2,
   },
+  paper: {
+    position: 'absolute',
+    width: theme.spacing.unit * 50,
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing.unit * 4,
+  },
 })
-const PictureCargoBadge = ({ classes, pictures }) =>
-  <CargoBadge
-    label="фото"
-    value={pictures.map((img, index) =>
-      <Avatar key={index} className={classes.photo} src={img.url} />,
-    )}
-  />
+
+class PictureCargoBadge extends React.Component {
+
+  state = {
+    open: false,
+    clickedId: 0,
+  }
+  handleOpen = () => {
+    this.setState({ open: true })
+  }
+
+  handleClose = () => {
+    this.setState({ open: false })
+  }
+
+  render() {
+    const { classes, pictures } = this.props
+    return (
+      <div>
+        <CargoBadge
+          label="фото"
+          value={
+            pictures.map((img, index) => <div>
+                <Avatar
+                  key={index}
+                  onClick={() => this.setState({ open: true, clickedId: index })}
+                  className={classes.photo}
+                  src={img.url} />
+              </div>,
+            )}
+        />
+
+        <Modal
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+          open={this.state.open}
+          onClose={this.handleClose}
+        >
+          <div style={getModalStyle()} className={classes.paper}>
+            <img src={pictures[this.state.clickedId].url} width="100%" />
+          </div>
+        </Modal>
+      </div>
+    )
+  }
+}
 
 PictureCargoBadge.propTypes = {
   classes: PropTypes.object.isRequired,

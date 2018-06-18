@@ -13,6 +13,7 @@ import CargoBadges from '../../../CargoBadges'
 import PictureCargoBadge from './PictureCargoBadge'
 import CargoBadge from '../../../CargoBadges/CargoBadge'
 import Avatar from '@material-ui/core/es/Avatar/Avatar'
+import Modal from '@material-ui/core/es/Modal/Modal'
 
 const styles = theme => ({
   root: {
@@ -42,55 +43,62 @@ const styles = theme => ({
   },
 })
 
-const CargoCard = ({ classes, cargo }) => {
-  const { id, from, to, pictures, primary_picture, title, ...rest } = cargo
 
-  const other = Object.keys(rest).map(key => ({ key, value: rest[key] }))
 
-  return (
-    <Card className={classes.root} key={id}>
-      <Grid container>
-        <Grid item xs={9}>
-          <Grid container alignItems="center">
-            <Grid item xs={7}>
-              <Typography gutterBottom variant="headline">
-                {title}
-              </Typography>
+class CargoCard extends React.Component{
+
+
+  render() {
+    const { classes, cargo } = this.props
+    const { id, from, to, pictures, primary_picture, title, ...rest } = cargo
+
+    const other = Object.keys(rest).map(key => ({ key, value: rest[key] }))
+
+    return (
+      <Card className={classes.root} key={id}>
+        <Grid container>
+          <Grid item xs={9}>
+            <Grid container alignItems="center">
+              <Grid item xs={7}>
+                <Typography gutterBottom variant="headline">
+                  <Link to={`/cargo/${id}`}>{title}</Link>
+                </Typography>
+              </Grid>
+              <Grid item xs={5}>
+                <PictureCargoBadge pictures={pictures} />
+              </Grid>
             </Grid>
-            <Grid item xs={5}>
-              <PictureCargoBadge pictures={pictures} />
-            </Grid>
+            <div className={classes.locations}>
+              <div className={classes.location}>
+                <Icon>send</Icon>
+                <Typography className={classes.location_text}>{from.address}</Typography>
+              </div>
+              <div className={classes.location}>
+                <Icon className={classes.rotated}>call_missed_outgoing</Icon>
+                <Typography className={classes.location_text}>{to.address}</Typography>
+              </div>
+            </div>
+            <CargoBadge label="дата отправления" value={moment(from.date).format('DD MMMM YYYY')} />
+            <CargoBadge label="дата прибытия" value={moment(to.date).format('DD MMMM YYYY')} />
+            <CargoBadges badges={other} />
           </Grid>
-          <div className={classes.locations}>
-            <div className={classes.location}>
-              <Icon>send</Icon>
-              <Typography className={classes.location_text}>{from.address}</Typography>
-            </div>
-            <div className={classes.location}>
-              <Icon className={classes.rotated}>call_missed_outgoing</Icon>
-              <Typography className={classes.location_text}>{to.address}</Typography>
-            </div>
-          </div>
-          <CargoBadge label="дата отправления" value={moment(from.date).format('DD MMMM YYYY')} />
-          <CargoBadge label="дата прибытия" value={moment(to.date).format('DD MMMM YYYY')} />
-          <CargoBadges badges={other} />
+          <Grid item xs={3}>
+            <Avatar className={classes.primaryPicture} src={primary_picture} alt="primary" width="100%" />
+            <Link to={`/cargo/${id}`}>
+              <Button fullWidth color="primary" variant="raised" className={classes.detailsButton}>
+                Подробее
+              </Button>
+            </Link>
+          </Grid>
         </Grid>
-        <Grid item xs={3}>
-          <Avatar className={classes.primaryPicture} src={primary_picture} alt="primary" width="100%" />
-          <Link to={`/cargo/${id}`}>
-            <Button fullWidth color="primary" variant="raised" className={classes.detailsButton}>
-              Подробее
-            </Button>
-          </Link>
-        </Grid>
-      </Grid>
-    </Card>
+      </Card>
   )
-}
+  }
+  }
 
-CargoCard.propTypes = {
-  cargo: PropTypes.object.isRequired,
-  classes: PropTypes.object.isRequired,
-}
+  CargoCard.propTypes = {
+    cargo: PropTypes.object.isRequired,
+    classes: PropTypes.object.isRequired,
+  }
 
-export default (withStyles(styles)(CargoCard))
+  export default (withStyles(styles)(CargoCard))

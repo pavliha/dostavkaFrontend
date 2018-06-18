@@ -26,7 +26,7 @@ class CargoForm extends React.Component {
 
   componentDidUpdate() {
     if (this.props.success) {
-      this.props.history.push('/cargo/created')
+      this.props.history.push('/cargo')
     }
   }
 
