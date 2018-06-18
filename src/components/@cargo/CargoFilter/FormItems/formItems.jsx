@@ -120,6 +120,7 @@ export default {
       <Select
         id="transport-input"
         label="Выбрать"
+        name="transport_type"
         fullWidth
         inputProps={{
           name: 'transport_type',
