@@ -28,8 +28,10 @@ const initialState = {
   loading: false,
   success: false,
   error: false,
-  value: '',
+  value: {},
   map: [],
+  from: {},
+  to: {},
 }
 
 const addCargo = (state = initialState, { type, payload }) => {
@@ -89,6 +91,8 @@ const addCargo = (state = initialState, { type, payload }) => {
       return {
         ...state,
         value: payload,
+        from: payload.from,
+        to: payload.to,
       }
     }
 

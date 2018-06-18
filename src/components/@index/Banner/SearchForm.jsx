@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 import Geosuggest from '../../Geosuggest'
 import TransparentButton from './TransparentButton'
 import { search } from '../../../actions/createCargo.action'
+import Container from '../../Container'
 
 const styles = {}
 
@@ -19,33 +20,35 @@ class SearchForm extends React.Component {
       handleSubmit,
     } = this.props
     return (
-      <form onSubmit={handleSubmit}>
-        <Grid container className="mt-5 mb-5 pt-5 pb-5" alignItems="center" spacing={24} justify="center">
-          <Grid item md={4} lg={3}>
-            <Geosuggest
-              id="to"
-              name="to"
-              onChange={setFieldValue}
-              onBlur={setFieldTouched}
-              fullWidth
-              label="Откуда забрать ваш груз?"
-            />
+      <Container>
+        <form onSubmit={handleSubmit}>
+          <Grid container spacing={24} justify="center">
+            <Grid item md={4} lg={3}>
+              <Geosuggest
+                id="to"
+                name="to"
+                onChange={setFieldValue}
+                onBlur={setFieldTouched}
+                fullWidth
+                label="Откуда забрать ваш груз?"
+              />
+            </Grid>
+            <Grid item md={4} lg={3}>
+              <Geosuggest
+                id="from"
+                name="from"
+                onChange={setFieldValue}
+                onBlur={setFieldTouched}
+                fullWidth
+                label="Куда отвезти ваш груз?"
+              />
+            </Grid>
+            <Grid item md={3} lg={2}>
+              <TransparentButton type="submit">доставить</TransparentButton>
+            </Grid>
           </Grid>
-          <Grid item md={4} lg={3}>
-            <Geosuggest
-              id="from"
-              name="from"
-              onChange={setFieldValue}
-              onBlur={setFieldTouched}
-              fullWidth
-              label="Куда отвезти ваш груз?"
-            />
-          </Grid>
-          <Grid item md={3} lg={2}>
-            <TransparentButton type="submit">доставить</TransparentButton>
-          </Grid>
-        </Grid>
-      </form>
+        </form>
+      </Container>
     )
   }
 }
@@ -60,9 +63,8 @@ export default connect()(withRouter(withFormik({
 
   handleSubmit: (values, { props, setSubmitting }) => {
     setTimeout(() => {
-      console.log(values)
       props.dispatch(search(values))
-      props.history.push('/cargo')
+      props.history.push('/cargo/create')
       setSubmitting(false)
     }, 100)
   },

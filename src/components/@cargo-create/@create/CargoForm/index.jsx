@@ -52,12 +52,14 @@ class CargoForm extends React.Component {
 
   render() {
     const { classes, ...form } = this.props
-
+    const { valuesSearch } = this.props
+    console.log(valuesSearch)
     return (
       <Card className={classes.root}>
         <form onSubmit={this.handleSubmit}>
           <CardContent>
             <FormItems
+              valuesSearch={valuesSearch}
               form={form}
               hasError={this.hasError}
               showHelperError={this.showHelperError}
