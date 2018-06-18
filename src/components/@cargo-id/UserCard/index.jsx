@@ -37,7 +37,7 @@ const styles = theme => ({
 const UserCard = ({ classes, cargo }) =>
   <Card>
     <div className={classes.user}>
-      <Avatar className={classes.user_avatar} src={cargo.user.avatar_url} />
+      <Avatar className={classes.user_avatar} src="http://lorempixel.com/200/200/" />
       <div className={classes.user_info}>
         <Typography align="center" variant="headline">
           {cargo.user.full_name}
@@ -63,9 +63,9 @@ UserCard.propTypes = {
   classes: PropTypes.object.isRequired,
   cargo: PropTypes.shape({
     user: PropTypes.shape({
-      avatar_url: PropTypes.string.isRequired,
+      avatar_url: PropTypes.string,
       full_name: PropTypes.string.isRequired,
-      succeeded: PropTypes.number.isRequired,
+      succeeded: PropTypes.number,
       phone: PropTypes.string.isRequired,
       email: PropTypes.string.isRequired,
     }),

@@ -12,6 +12,7 @@ import Icon from '@material-ui/core/es/Icon/Icon'
 import CargoBadges from '../../../CargoBadges'
 import PictureCargoBadge from './PictureCargoBadge'
 import CargoBadge from '../../../CargoBadges/CargoBadge'
+import Avatar from '@material-ui/core/es/Avatar/Avatar'
 
 const styles = theme => ({
   root: {
@@ -34,6 +35,7 @@ const styles = theme => ({
     marginTop: theme.spacing.size1,
   },
   primaryPicture: {
+    borderRadius: 3,
     width: 200,
     height: 200,
     background: 'rgba(0,0,0,0.1)',
@@ -74,9 +76,7 @@ const CargoCard = ({ classes, cargo }) => {
           <CargoBadges badges={other} />
         </Grid>
         <Grid item xs={3}>
-          <div className={classes.primaryPicture}>
-            {primary_picture && <img src={primary_picture} alt="primary" width="100%" />}
-          </div>
+          <Avatar className={classes.primaryPicture} src={primary_picture} alt="primary" width="100%" />
           <Link to={`/cargo/${id}`}>
             <Button fullWidth color="primary" variant="raised" className={classes.detailsButton}>
               Подробее

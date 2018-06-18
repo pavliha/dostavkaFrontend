@@ -8,7 +8,6 @@ import filterBadges from '../../../../utils/filterBadges'
 
 const FilterBadges = ({ badges, selected, actions }) => {
   const filteredBadges = filterBadges(badges, selected)
-
   return filteredBadges.map(obj => {
     const value = Object.values(obj)[0]
     const key = Object.keys(obj)[0]

@@ -9,6 +9,7 @@ import Button from '@material-ui/core/es/Button/Button'
 import Typography from '@material-ui/core/es/Typography/Typography'
 import loginFormik from './loginFormik'
 import connector from '../../connector'
+import { withRouter } from 'react-router-dom'
 
 const styles = theme => ({
   root: {
@@ -34,6 +35,12 @@ class LoginCard extends React.Component {
     handleSubmit(e)
   }
 
+  componentDidUpdate() {
+    if (this.props.auth.user) {
+      this.props.history.push('/cargo')
+    }
+  }
+
   serverError = (fieldName) => {
     const { auth } = this.props
     const serverErrors = {}
@@ -48,7 +55,7 @@ class LoginCard extends React.Component {
     const { isSubmited } = this.state
     const { errors, touched } = this.props
 
-    return (!!errors[fieldName] && touched[fieldName] && isSubmited) || this.serverError(fieldName)
+    return (!!errors[fieldName] && touched[fieldName] && isSubmited) || !!this.serverError(fieldName)
   }
 
   showHelperError = (fieldName) => {
@@ -122,4 +129,4 @@ LoginCard.propTypes = {
   isSubmitting: PropTypes.bool.isRequired,
 }
 
-export default withStyles(styles)(loginFormik(connector(LoginCard)))
+export default withStyles(styles)(connector(loginFormik(withRouter(LoginCard))))
