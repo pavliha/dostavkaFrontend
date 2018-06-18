@@ -40,7 +40,7 @@ const InfoTable = ({ classes, id, distance, datetime, countryBorder }) =>
 InfoTable.propTypes = {
   classes: PropTypes.object.isRequired,
   id: PropTypes.number.isRequired,
-  distance: PropTypes.node.isRequired,
+  distance: PropTypes.node,
   datetime: PropTypes.string.isRequired,
   countryBorder: PropTypes.bool,
 }

@@ -28,6 +28,7 @@ const styles = theme => ({
     display: 'flex',
   },
   photo: {
+    cursor: 'pointer',
     borderRadius: '5%',
     margin: 2,
     flexBasis: '24%',

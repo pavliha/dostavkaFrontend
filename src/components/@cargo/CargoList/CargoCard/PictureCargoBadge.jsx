@@ -23,6 +23,7 @@ function getModalStyle() {
 
 const styles = theme => ({
   photo: {
+    cursor: 'pointer',
     borderRadius: '5%',
     margin: 2,
   },
@@ -56,9 +57,8 @@ class PictureCargoBadge extends React.Component {
         <CargoBadge
           label="фото"
           value={
-            pictures.map((img, index) => <div>
+            pictures.map((img, index) => <div key={index}>
                 <Avatar
-                  key={index}
                   onClick={() => this.setState({ open: true, clickedId: index })}
                   className={classes.photo}
                   src={img.url} />

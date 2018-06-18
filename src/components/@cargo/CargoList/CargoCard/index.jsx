@@ -61,7 +61,7 @@ class CargoCard extends React.Component {
                   <Link to={`/cargo/${id}`}>{title}</Link>
                 </Typography>
               </Grid>
-              <Grid item xs={5}>
+              <Grid item xs={5} container justify="flex-end">
                 <PictureCargoBadge pictures={pictures} />
               </Grid>
             </Grid>
