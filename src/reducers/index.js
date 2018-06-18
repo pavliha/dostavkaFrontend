@@ -3,7 +3,7 @@ import addCargoFormReducer from './createCargo.reducer'
 import authReducer from './auth.reducer'
 import popularRoutes from './popularRoutes.reducer'
 import alertReducer from './alert.reducer'
-import cargoReducer from './cargoList.reducer'
+import cargoReducer from './cargoReducer'
 
 export default combineReducers({
   authReducer,
