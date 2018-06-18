@@ -60,7 +60,6 @@ export default withFormik({
   }),
 
   handleSubmit: (values, { props, setSubmitting }) => {
-    console.log(values)
     let form = {
       title: values.title,
       from: {

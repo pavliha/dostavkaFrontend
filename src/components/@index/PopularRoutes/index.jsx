@@ -19,7 +19,7 @@ class PopularRoutes extends React.Component {
     const { classes, popularRoutes } = this.props
     return (
       <section className={classes.root}>
-        <section className="bg-dark">
+        <section>
           <Container className="p-5 d-flex justify-content-around">
             {popularRoutes.map(route =>
               <CarriersCounter

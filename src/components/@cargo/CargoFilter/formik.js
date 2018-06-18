@@ -1,5 +1,4 @@
 import Yup from 'yup'
-import moment from 'moment'
 import clean from 'lodash-clean'
 import { withFormik } from 'formik'
 
@@ -53,7 +52,6 @@ export default withFormik({
   }),
 
   handleSubmit: (values, { props, setSubmitting }) => {
-    console.log(values)
     let form = {
       title: values.title,
       from: {

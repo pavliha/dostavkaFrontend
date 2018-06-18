@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 
 const style = {
   height: '450px',
+  backgroundColor: '#09091A',
 }
 
 const TextInfo = ({ children }) =>

@@ -5,11 +5,11 @@ import Card from '@material-ui/core/es/Card/Card'
 import { withStyles } from '@material-ui/core/styles'
 import { withRouter } from 'react-router-dom'
 import CardContent from '@material-ui/core/es/CardContent/CardContent'
+import CardActions from '@material-ui/core/es/CardActions/CardActions'
+import Button from '@material-ui/core/es/Button/Button'
 import AdditionalFormItems from './FormBadges'
 import FormItems from './FormItems'
 import formik from './formik'
-import CardActions from '@material-ui/core/es/CardActions/CardActions'
-import Button from '@material-ui/core/es/Button/Button'
 import connector from './connector'
 
 const style = theme => ({

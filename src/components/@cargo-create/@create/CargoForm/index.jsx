@@ -9,8 +9,8 @@ import CardActions from '@material-ui/core/es/CardActions/CardActions'
 import Button from '@material-ui/core/es/Button/Button'
 import AdditionalFormItems from './FormBadges'
 import FormItems from './FormItems'
-import connector from './connector'
 import formik from './formik'
+import connector from './connector'
 
 const style = theme => ({
   root: {

@@ -1,9 +1,10 @@
 import {
   ADD_FORM_ITEM,
-  CREATE_CARGO, CREATE_CARGO_FULFILLED,
+  CREATE_CARGO_FULFILLED,
   CREATE_CARGO_PENDING, CREATE_CARGO_REJECTED,
   REMOVE_FORM_ITEM,
   UPDATE_MAP,
+  SEARCH_FORM_ITEM,
 } from '../actions/createCargo.action'
 
 const initialState = {
@@ -27,7 +28,8 @@ const initialState = {
   loading: false,
   success: false,
   error: false,
-  map: []
+  value: '',
+  map: [],
 }
 
 const addCargo = (state = initialState, { type, payload }) => {
@@ -80,6 +82,13 @@ const addCargo = (state = initialState, { type, payload }) => {
       return {
         ...state,
         map,
+      }
+    }
+
+    case SEARCH_FORM_ITEM: {
+      return {
+        ...state,
+        value: payload,
       }
     }
 
