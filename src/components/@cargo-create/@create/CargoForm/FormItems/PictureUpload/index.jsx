@@ -98,7 +98,7 @@ class PictureUpload extends React.Component {
   render() {
     const { classes, name, value, helperText, ...props } = this.props
     return (
-      <FormControl error={props.error}>
+      <FormControl error={!!props.error}>
         <div className={classes.pictureList}>
           <PictureList pictures={this.state.pictures} />
           <AddPicture onClick={this.handleClickInput} />
@@ -127,10 +127,11 @@ PictureUpload.propTypes = {
   value: PropTypes.array.isRequired,
   onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
-  helperText: PropTypes.string.isRequired,
+  helperText: PropTypes.string,
 }
 PictureUpload.defaultProps = {
   url: '/upload',
+  helperText: ''
 }
 
 export default withStyles(styles)(PictureUpload)

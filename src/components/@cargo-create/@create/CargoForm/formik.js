@@ -36,6 +36,8 @@ export default withFormik({
 
   }),
 
+  validateOnBlur: false,
+
   // Custom sync validation
 
   validationSchema: Yup.object().shape({
@@ -90,7 +92,6 @@ export default withFormik({
     form = clean(form)
 
     props.actions.cargoForm.submit(form)
-
 
     setSubmitting(false)
   },

@@ -1,12 +1,12 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as actions from '../../../../actions/cargo.action'
+import * as actions from '../../../../actions/createCargo.action'
 
 const initMapStateToProps = state => state.addCargoFormReducer
 
 const initMapDispatchToProps = dispatch => ({
   actions: {
-    cargo: bindActionCreators(actions, dispatch),
+    cargoForm: bindActionCreators(actions, dispatch),
   },
 })
 
