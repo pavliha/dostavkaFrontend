@@ -21,7 +21,13 @@ class Http {
 
   async post(url, params) {
     const [err, response] = await to(this.instance.post(url, params))
-    if (err) throw err.response.data
+
+    if (err) {
+      if (!err.response) {
+        throw err.response.data
+      }
+      throw err.response
+    }
 
     return response.data
   }
