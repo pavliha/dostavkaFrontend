@@ -50,7 +50,7 @@ const styles = theme => ({
 
 const Footer = ({ classes }) =>
   <div className={classes.footerGrid}>
-    <Grid container className={classes.root}>
+    <Grid container justify="center" className={classes.root}>
       <Grid item xs={3} className={classes.div}>
         <Grid>
           <Grid item>
@@ -88,15 +88,7 @@ const Footer = ({ classes }) =>
         </Grid>
       </Grid>
       <Grid item xs={3} className={classes.root}>
-        <Grid>
-          <Grid item>
-            <div className={classNames(classes.footerTitle, classes.iconMargin)}>Регламент</div>
-            <img src="" alt="Twitter" />
-            <img src="" alt="Instagram" />
-            <img src="" alt="Facebook" />
-            <img src="" alt="Google Play" />
-          </Grid>
-        </Grid>
+
       </Grid>
     </Grid>
     <Grid item xs={12} className={classes.root}>
