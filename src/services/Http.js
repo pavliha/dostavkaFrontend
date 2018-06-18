@@ -6,9 +6,8 @@ class Http {
   constructor() {
     this.instance = axios.create({
       baseURL: 'http://localhost:3333',
-      timeout: 1000,
-      headers: { Authorization: Token.get() },
-      adapter: (axios.defaults.adapter),
+      timeout: 10000,
+      headers: { Authorization: Token.get() }
     })
   }
 

@@ -36,8 +36,6 @@ const FormItems = ({ required, selected, actions, form, hasError, showHelperErro
         value: values[name],
         error: hasError(name),
         onChange: (...e) => {
-
-          debugger
           actions.cargoForm.updateMap(...e)
           setFieldValue(...e)
         },
