@@ -120,7 +120,14 @@ export default {
 
   description: {
     label: 'Добавить описание',
-    component: <TextField name="description" fullWidth label="Описание" />,
+    component:
+      <TextField
+        multiline
+        rowsMax="4"
+        name="description"
+        fullWidth
+        label="Описание"
+      />,
   },
 
   transport_type: {

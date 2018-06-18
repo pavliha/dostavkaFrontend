@@ -16,11 +16,11 @@ const InfoTable = ({ classes, id, distance, datetime, countryBorder }) =>
     <tbody>
     <tr>
       <td>номер заявки:</td>
-      <td>{id}</td>
+      <td>№{id}</td>
     </tr>
     <tr>
       <td>растояние:</td>
-      <td>{distance}</td>
+      <td>20 км</td>
     </tr>
     <tr>
       <td>граница:</td>
@@ -41,8 +41,8 @@ InfoTable.propTypes = {
   classes: PropTypes.object.isRequired,
   id: PropTypes.number.isRequired,
   distance: PropTypes.node.isRequired,
-  datetime: PropTypes.object.isRequired,
-  countryBorder: PropTypes.bool.isRequired,
+  datetime: PropTypes.string.isRequired,
+  countryBorder: PropTypes.bool,
 }
 
 export default withStyles(styles)(InfoTable)

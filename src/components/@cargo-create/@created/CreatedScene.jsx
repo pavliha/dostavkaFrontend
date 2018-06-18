@@ -46,9 +46,9 @@ const CreatedScene = ({ classes }) =>
         Thank you. Cargo created
       </Typography>
 
-      <Link to="/cargo/create">
+      <a href="/cargo/create">
         <Button variant="raised" color="primary">add another cargo</Button>
-      </Link>
+      </a>
     </div>
   </div>
 

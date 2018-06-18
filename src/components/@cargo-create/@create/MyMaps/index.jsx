@@ -44,7 +44,7 @@ const MapWithADirectionsRenderer = compose(
 )(props =>
   <GoogleMap
     defaultZoom={7}
-    defaultCenter={new google.maps.LatLng(41.8507300, -87.6512600)}
+    defaultCenter={new google.maps.LatLng(50.437622, 30.527959)}
   >
     {props.directions && <DirectionsRenderer directions={props.directions} />}
   </GoogleMap>
