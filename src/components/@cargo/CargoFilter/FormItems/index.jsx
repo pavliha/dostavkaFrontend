@@ -43,7 +43,7 @@ const FormItems = ({ required, selected, actions, form, hasError, showHelperErro
 
     return (
       <FormItem
-        onClose={() => actions.cargoForm.remove(name)}
+        onClose={() => actions.filter.remove(name)}
         key={index}
         title={label}
       >
