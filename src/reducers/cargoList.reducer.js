@@ -1,4 +1,9 @@
-import { LOAD_CARGO_FULFILLED, LOAD_CARGO_PENDING, LOAD_CARGO_REJECTED, SHOW_CARGO }
+import {
+  LOAD_CARGO_FULFILLED,
+  LOAD_CARGO_PENDING,
+  LOAD_CARGO_REJECTED,
+  SHOW_CARGO,
+}
   from '../actions/cargo.action'
 
 const initialState = {
@@ -32,6 +37,13 @@ const cargoListReducer = (state = initialState, { type, payload }) => {
         ...state,
         loading: false,
         error: payload,
+      }
+    }
+
+    case SHOW_CARGO: {
+      return {
+        ...state,
+        cargo: state.cargos.find(cargo => cargo.id === payload),
       }
     }
 

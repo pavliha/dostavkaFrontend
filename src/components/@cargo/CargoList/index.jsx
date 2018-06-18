@@ -12,6 +12,8 @@ class CargoList extends React.Component {
   render() {
     const { cargos, loading } = this.props
 
+    if (loading) return <div>Loading...</div>
+
     return cargos.map(cargo =>
       <CargoCard key={cargo.id} cargo={cargo} />,
     )

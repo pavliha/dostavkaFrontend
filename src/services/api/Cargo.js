@@ -6,7 +6,7 @@ class Cargo {
     return Http.get('/cargo')
   }
 
-  paginate({ limit = 10, page }) {
+  paginate({ limit = 10, page = 1 }) {
     return Http.get(`/cargo?page=${page}&limit=${limit}`)
   }
 

@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 // eslint-disable-next-line max-len
-const url = 'https://lh4.googleusercontent.com/v8dNbUclPVoejmQJ8obvhPAqP82cD3VvsciM7t9x4AzCdIubbDH-eLcnz0po4pxyBT-rEdSbbBc4bPepBguh=w1600-h794-rw'
+const url = 'https://lh4.googleusercontent.com/tzmwwmx1iGDJzvWkdWsEIR9j_rUbqrsugplrDWeWiRjbRHAmWinGdq-l4--igpwQrx0O9ALp6D1lZhOaYSuL=w1600-h794-rw'
 
 const style = {
   backgroundImage: `url(${url})`,

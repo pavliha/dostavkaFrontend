@@ -17,7 +17,7 @@ export const show = (id) => ({
 // noinspection JSUnusedGlobalSymbols
 export const load = () => ({
   type: LOAD_CARGO,
-  payload: Cargo.paginate({}),
+  payload: Cargo.paginate({ limit: 10, page: 1 }),
 })
 
 // noinspection JSUnusedGlobalSymbols

@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/es/Typography/Typography'
 import { Link } from 'react-router-dom'
 import Button from '@material-ui/core/es/Button/Button'
 
-const CreateScene = () =>
+const CreateScene = ({ classes }) =>
   <div className={classes.root}>
     <div className={classes.main}>
       <Typography
@@ -22,6 +22,8 @@ const CreateScene = () =>
     </div>
   </div>
 
-CreateScene.propTypes = {}
+CreateScene.propTypes = {
+  classes: PropTypes.object.isRequired,
+}
 
 export default CreateScene
