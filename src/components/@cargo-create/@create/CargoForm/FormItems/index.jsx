@@ -32,7 +32,6 @@ const FormItems = ({ required, selected, actions, form, hasError, showHelperErro
     })(component)
 
     if (name === 'from' || name === 'to') {
-      debugger
       Input = decorator({
         value: values[name],
         error: hasError(name),

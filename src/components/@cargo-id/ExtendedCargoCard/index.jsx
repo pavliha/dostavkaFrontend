@@ -9,7 +9,8 @@ import Typography from '@material-ui/core/es/Typography/Typography'
 import Icon from '@material-ui/core/es/Icon/Icon'
 import CargoBadges from '../../CargoBadges'
 import connector from '../connector'
-
+import LargePictureCargoBadge from './LargePictureCargoBadge'
+import InfoTable from './InfoTable'
 import CargoBadge from '../../CargoBadges/CargoBadge'
 
 const styles = theme => ({
@@ -29,6 +30,15 @@ const styles = theme => ({
   rotated: {
     transform: 'rotate(45deg)',
   },
+  detailsButton: {
+    marginTop: theme.spacing.size1,
+  },
+  descriptionBadge: {
+    padding: theme.spacing.size2,
+  },
+  description: {
+    padding: theme.spacing.size1,
+  },
 })
 
 const ExtendedCargoCard = ({ classes, cargo }) => {
@@ -36,7 +46,13 @@ const ExtendedCargoCard = ({ classes, cargo }) => {
     id,
     from,
     to,
+    pictures,
+    description,
+    crosses_border,
+    distance,
+    primary_picture,
     title,
+    updated_at,
     ...rest
   } = cargo
 
@@ -66,6 +82,24 @@ const ExtendedCargoCard = ({ classes, cargo }) => {
           <CargoBadge label="дата отправления" value={moment(from.date).format('DD MMMM YYYY')} />
           <CargoBadge label="дата прибытия" value={moment(to.date).format('DD MMMM YYYY')} />
           <CargoBadges extended badges={other} />
+
+          <LargePictureCargoBadge pictures={pictures} />
+
+          <div className={classes.description}>
+            <Typography variant="subheading">Описание:</Typography>
+            <Typography variant="body1">
+              {description}
+            </Typography>
+          </div>
+        </Grid>
+        <Grid item xs={4}>
+          <img src={primary_picture} alt="primary" width="100%" />
+          <InfoTable
+            id={id}
+            distance={distance}
+            countryBorder={crosses_border}
+            datetime={updated_at}
+          />
         </Grid>
       </Grid>
     </Card>
