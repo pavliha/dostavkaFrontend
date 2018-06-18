@@ -94,7 +94,7 @@ export default withFormik({
 
     props.actions.cargoForm.submit(form)
 
-    props.alert.show('Ваш груз был добавлен')
+    props.actions.alert.show('Ваш груз был добавлен')
 
     setSubmitting(false)
   },

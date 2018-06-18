@@ -96,9 +96,9 @@ class PictureUpload extends React.Component {
   }
 
   render() {
-    const { classes, name, value, helperText, ...props } = this.props
+    const { classes, name, value, helperText, error, ...props } = this.props
     return (
-      <FormControl error={!!props.error}>
+      <FormControl>
         <div className={classes.pictureList}>
           <PictureList pictures={this.state.pictures} />
           <AddPicture onClick={this.handleClickInput} />

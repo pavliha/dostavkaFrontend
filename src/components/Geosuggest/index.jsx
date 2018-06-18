@@ -36,6 +36,10 @@ class Geosuggest extends Component {
     }
   }
 
+  componentWillUnmount() {
+    document.removeEventListener('click', this.apiObj)
+  }
+
   handleChange = e => {
     this.setState({ value: e.target.value })
   }
