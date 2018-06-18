@@ -1,5 +1,7 @@
+/* eslint-disable react/sort-comp */
 import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
+import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Card from '@material-ui/core/es/Card/Card'
 import TextField from '@material-ui/core/es/TextField/TextField'
@@ -9,7 +11,6 @@ import Button from '@material-ui/core/es/Button/Button'
 import Typography from '@material-ui/core/es/Typography/Typography'
 import loginFormik from './loginFormik'
 import connector from '../../connector'
-import { withRouter } from 'react-router-dom'
 
 const styles = theme => ({
   root: {

@@ -8,11 +8,11 @@ import Button from '@material-ui/core/es/Button/Button'
 import Card from '@material-ui/core/es/Card/Card'
 import Grid from '@material-ui/core/es/Grid/Grid'
 import Typography from '@material-ui/core/es/Typography/Typography'
+import Avatar from '@material-ui/core/es/Avatar/Avatar'
 import Icon from '@material-ui/core/es/Icon/Icon'
 import CargoBadges from '../../../CargoBadges'
 import PictureCargoBadge from './PictureCargoBadge'
 import CargoBadge from '../../../CargoBadges/CargoBadge'
-import Avatar from '@material-ui/core/es/Avatar/Avatar'
 
 const styles = theme => ({
   root: {

@@ -2,6 +2,7 @@ import Cargo from '../services/api/Cargo'
 
 export const ADD_FORM_ITEM = 'ADD_FORM_ITEM'
 export const REMOVE_FORM_ITEM = 'REMOVE_FORM_ITEM'
+export const SEARCH_FORM_ITEM = 'SEARCH_FORM_ITEM'
 
 export const CREATE_CARGO = 'CREATE_CARGO'
 export const CREATE_CARGO_PENDING = 'CREATE_CARGO_PENDING'
@@ -24,16 +25,21 @@ export const remove = formItem => ({
 export const updateMap = (name, values) => ({
   type: UPDATE_MAP,
   payload: {
-    name: name,
+    name,
     value: {
       lat: values.geometry.location.lat(),
-      lng: values.geometry.location.lng()
-    }
-  }
+      lng: values.geometry.location.lng(),
+    },
+  },
 })
 
 // noinspection JSUnusedGlobalSymbols
 export const submit = (form) => ({
   type: CREATE_CARGO,
   payload: Cargo.create(form),
+})
+
+export const search = formItem => ({
+  type: SEARCH_FORM_ITEM,
+  payload: formItem,
 })

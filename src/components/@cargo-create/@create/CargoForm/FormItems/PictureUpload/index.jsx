@@ -131,7 +131,7 @@ PictureUpload.propTypes = {
 }
 PictureUpload.defaultProps = {
   url: '/upload',
-  helperText: ''
+  helperText: '',
 }
 
 export default withStyles(styles)(PictureUpload)

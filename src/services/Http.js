@@ -6,9 +6,8 @@ class Http {
   constructor() {
     this.instance = axios.create({
       baseURL: 'http://localhost:3333',
-      timeout: 1000,
-      headers: { Authorization: Token.get() },
-      adapter: (axios.defaults.adapter),
+      timeout: 10000,
+      headers: { Authorization: Token.get() }
     })
   }
 
@@ -21,7 +20,13 @@ class Http {
 
   async post(url, params) {
     const [err, response] = await to(this.instance.post(url, params))
-    if (err) throw err.response.data
+
+    if (err) {
+      if (!err.response) {
+        throw err.response.data
+      }
+      throw err.response
+    }
 
     return response.data
   }
